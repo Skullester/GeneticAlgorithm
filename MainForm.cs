@@ -3,6 +3,7 @@ namespace GeneticAlgorithm;
 public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
+    private Field field;
     public MainForm()
     {
         InitializeComponent();
