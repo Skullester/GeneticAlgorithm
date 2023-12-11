@@ -40,8 +40,15 @@ public partial class MainForm : Form
         }
         var genesCount = int.Parse(comboBoxCountOfGenes.Text);
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
+        CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
+
+    private void CreateField()
+    {
+        field = new Field(geneticAlgorithm.Population!, this);
+    }
+
     private bool ValidateParameters()
     {
         return !(comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null);

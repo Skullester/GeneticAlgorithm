@@ -14,3 +14,5 @@ H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\re
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.pdb
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.genruntimeconfig.cache
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\ref\GeneticAlgorithm.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.Properties.Resources.resources
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.sourcelink.json

@@ -23,7 +23,7 @@ public class Individual
     public static (Individual, Individual) GetNewIndividuals(Individual parent1, Individual parent2) => parent1 + parent2;
     public void OnDying()
     {
-        Handler?.Invoke(Color.Black);
+        Handler?.Invoke(Color.Red);
     }
     public void OnSurvive()
     {
