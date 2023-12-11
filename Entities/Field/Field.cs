@@ -35,18 +35,19 @@ public class Field
             fieldPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             fieldPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
         }
-        form.Hint.Visible = true;
+        //   form.Hint.Visible = true;
         fieldPanel.Location = new Point(580, 150);
     }
     private void FillField()
     {
+        //при квадрате смысл во второй координате отсутствует
         sizeX = sizeY = (int)Math.Sqrt(population.Count);
         InitializePanel();
         cells = new Cell[sizeX, sizeY];
         int popIndex = 0;
         for (int i = 0; i < sizeX; i++)
         {
-            for (int j = 0; j < sizeY; j++)
+            for (int j = 0; j < sizeX; j++)
             {
                 var button = new Button();
                 button.BackColor = Color.Green;

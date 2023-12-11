@@ -14,7 +14,7 @@ public class Cell
     public void ChangeColor(Color color)
     {
         this.color = color;
-        Button.ForeColor = color;
+        Button.BackColor = color;
     }
 
 }

@@ -29,4 +29,8 @@ public class Individual
     {
         Handler?.Invoke(Color.Green);
     }
+    public void OnCrossing()
+    {
+        Handler?.Invoke(Color.Yellow);
+    }
 }

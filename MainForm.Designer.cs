@@ -149,11 +149,12 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(246, 299);
+            label1.Location = new Point(226, 266);
             label1.Name = "label1";
             label1.Size = new Size(105, 56);
             label1.TabIndex = 13;
             label1.Text = "Время:\r\nИтерация:";
+            label1.Visible = false;
             // 
             // MainForm
             // 
@@ -190,7 +191,5 @@
         private Label label3;
         private ComboBox comboBoxMaxMin;
         private Label label1;
-
-        public Label Hint { get; private set; }
     }
 }

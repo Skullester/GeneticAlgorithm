@@ -42,6 +42,11 @@ public partial class MainForm : Form
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
         CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        Thread.Sleep(2000);
+        foreach (var item in geneticAlgorithm.Population)
+        {
+            item.OnDying();
+        }
     }
 
     private void CreateField()
