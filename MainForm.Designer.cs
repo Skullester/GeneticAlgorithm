@@ -39,6 +39,7 @@
             label3 = new Label();
             comboBoxMaxMin = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
+            label1 = new Label();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -254,11 +255,22 @@
             tableLayoutPanel1.Size = new Size(562, 316);
             tableLayoutPanel1.TabIndex = 13;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.Location = new Point(571, 431);
+            label1.Name = "label1";
+            label1.Size = new Size(359, 56);
+            label1.TabIndex = 14;
+            label1.Text = "Зеленый - особь пережила итерацию\r\nКрасный - особь умерла";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1359, 649);
+            Controls.Add(label1);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(comboBoxMaxMin);
             Controls.Add(label3);
@@ -289,5 +301,6 @@
         private Label label3;
         private ComboBox comboBoxMaxMin;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label label1;
     }
 }

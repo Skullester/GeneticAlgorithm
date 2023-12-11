@@ -2,14 +2,21 @@
 
 public class Field
 {
-    private readonly Button[,] buttons;
+    private readonly Cell[,] cells;
     private readonly int sizeX;
     private readonly int sizeY;
-
     public Field()
     {
-        buttons = new Button[2, 2];
+        cells = new Cell[sizeX, sizeY];
     }
+    public Cell this[int i, int j]
+    {
+        get => cells[i, j];
+        set => cells[i, j] = value;
+    }
+    private void FillField()
+    {
 
+    }
 
 }

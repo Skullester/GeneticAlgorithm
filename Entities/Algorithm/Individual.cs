@@ -3,6 +3,7 @@
 public class Individual
 {
     public int Value { get; set; } //заглушка
+    public event Action<Color>? Handler;
     public Individual? Partner { get; set; }
     public Population Population { get; }
     public int[] Genes { get; }
@@ -20,5 +21,12 @@ public class Individual
         return (new Individual(new Population(1)), new Individual(new Population(1)));//temp
     }
     public static (Individual, Individual) GetNewIndividuals(Individual parent1, Individual parent2) => parent1 + parent2;
-
+    public void OnDying()
+    {
+        Handler?.Invoke(Color.Black);
+    }
+    public void OnSurvive()
+    {
+        Handler?.Invoke(Color.Green);
+    }
 }
