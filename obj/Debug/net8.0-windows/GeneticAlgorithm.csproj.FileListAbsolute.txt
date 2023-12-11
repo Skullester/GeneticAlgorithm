@@ -1,0 +1,16 @@
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\GeneticAlgorithm.exe
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\GeneticAlgorithm.deps.json
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\GeneticAlgorithm.runtimeconfig.json
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\GeneticAlgorithm.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\GeneticAlgorithm.pdb
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.MainForm.resources
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.csproj.GenerateResource.cache
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.GeneratedMSBuildEditorConfig.editorconfig
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.AssemblyInfoInputs.cache
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.AssemblyInfo.cs
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.csproj.CoreCompileInputs.cache
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\refint\GeneticAlgorithm.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.pdb
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.genruntimeconfig.cache
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\ref\GeneticAlgorithm.dll
