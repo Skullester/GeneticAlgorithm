@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GeneticAlgorithm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9f11844c5eb215534e4fdeb5b76aabf9c175e74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("GeneticAlgorithm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GeneticAlgorithm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
