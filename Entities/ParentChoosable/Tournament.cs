@@ -18,6 +18,6 @@ public class Tournament : ParentChoosing
     }
     public override string ToString()
     {
-        return "Турнирный отбор (t = " + t + ")";
+        return $"Турнирный отбор (t = {t})";
     }
 }
