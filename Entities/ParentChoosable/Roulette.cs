@@ -35,22 +35,24 @@ public class Roulette : ParentChoosing
             Segment seg = new(num, num += ratio);
             dic[seg] = ind;
         }
+        var parents = new List<Individual>();
         for (int i = 0; i < pop.Count; i++)
         {
             foreach (var item in dic)
             {
                 var seg = item.Key;
                 var numb = rand.NextDouble();
-                if (seg.Start < numb && numb < seg.End)
+                if (seg.Start <= numb && numb <= seg.End)
+                    parents.Add(item.Value);
+            }
         }
+        foreach (var ind in parents)
+        {
+            var index = rand.Next(0, parents.Count);
+            var partner = pop[index];
+            if (partner != ind)
+                yield return new(ind, partner);
         }
-
-        //foreach (var item in dic)
-        //{
-        //    var score = rand.NextDouble();
-        //    set.Add(item.Value);
-        //    yield return
-        //}
     }
     public override string ToString()
     {
