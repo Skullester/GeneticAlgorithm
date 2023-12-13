@@ -15,12 +15,8 @@ public partial class MainForm : Form
 
         comboBoxParents.SelectedValueChanged += OnComboBoxParentValueChanged;
         comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
-        comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm)]);
-        comboBoxRecombinations.Items.AddRange([
-            // new Discrete(),
-            new Crossover(),
-            new Intermediate()]);
-        // new Linear()]);
+        comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
+        comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
     }
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
@@ -28,7 +24,7 @@ public partial class MainForm : Form
     }
     private void OnComboBoxRecombinationValueChanged(object? o, EventArgs e)
     {
-        geneticAlgorithm.RecombinationChoosable = comboBoxParents.SelectedItem as IRecombinationChoosable;
+        geneticAlgorithm.Recombination = comboBoxRecombinations.SelectedItem as Recombination;
     }
     private void GeneratePopulation(object sender, EventArgs e)
     {
@@ -42,11 +38,6 @@ public partial class MainForm : Form
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
         CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        Thread.Sleep(2000);
-        foreach (var item in geneticAlgorithm.Population)
-        {
-            item.OnDying();
-        }
     }
 
     private void CreateField()
@@ -60,7 +51,6 @@ public partial class MainForm : Form
     }
     private void StartCrossover(object o, EventArgs e)
     {
-        geneticAlgorithm.Fitness = comboBoxMaxMin.Text == "Макс";
         geneticAlgorithm.Start();
     }
 }

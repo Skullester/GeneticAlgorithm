@@ -4,7 +4,7 @@ public class Individual
 {
     public int Value { get; set; } //заглушка
     public event Action<Color>? Handler;
-    public Individual? Partner { get; set; }
+    //public HashSet<Individual> Partners { get; set; } = new();
     public Population Population { get; }
     public int[] Genes { get; }
     public Individual(Population pop)
@@ -12,18 +12,21 @@ public class Individual
         Population = pop;
         Genes = new int[pop.GenesCount];
     }
-    public override string ToString()
+    public Individual(Population pop, params int[] genes) : this(pop)
     {
-        return string.Join("", Genes);
+        Genes = genes;
     }
-    public static (Individual, Individual) operator +(Individual parent1, Individual parent2)
-    {
-        return (new Individual(new Population(1)), new Individual(new Population(1)));//temp
-    }
-    public static (Individual, Individual) GetNewIndividuals(Individual parent1, Individual parent2) => parent1 + parent2;
+    //public static (Individual, Individual) operator +(Individual parent1, Individual parent2)
+    //{
+    //    return Population.RecombinationType.Cross();
+    //    //     return (new Individual(new Population(1)), new Individual(new Population(1)));//temp
+    //}
+    //public static (Individual, Individual) Cross(Individual parent1, Individual parent2) => parent1 + parent2;
+    //public (Individual, Individual) CrossWith(Individual parent2) => this + parent2;
     public void OnDying()
     {
         Handler?.Invoke(Color.Red);
+        Population.RemoveIndividual(this);
     }
     public void OnSurvive()
     {
@@ -32,5 +35,9 @@ public class Individual
     public void OnCrossing()
     {
         Handler?.Invoke(Color.Yellow);
+    }
+    public override string ToString()
+    {
+        return string.Join("", Genes);
     }
 }

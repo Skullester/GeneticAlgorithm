@@ -6,7 +6,7 @@ public class Inbreeding : ParentChoosing
     {
 
     }
-    public override void SetPartners() => OrderBy(x => x.MinBy(x => x.count).individ);
+    public override IEnumerable<(Individual, Individual)> FindPartners() => GetParents(x => x.MinBy(x => x.count).individ);
     public override string ToString()
     {
         return "Инбридинг";

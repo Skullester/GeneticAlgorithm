@@ -1,4 +1,6 @@
-﻿namespace GeneticAlgorithm;
+﻿using System.Collections.Generic;
+
+namespace GeneticAlgorithm;
 
 public abstract class ParentChoosing
 {
@@ -7,8 +9,9 @@ public abstract class ParentChoosing
     {
         Algorithm = algorithm;
     }
-    public abstract void SetPartners();
-    protected void OrderBy(Func<IEnumerable<(int count, Individual individ)>, Individual> selector)
+    public abstract IEnumerable<(Individual, Individual)> FindPartners();
+
+    protected IEnumerable<(Individual, Individual)> GetParents(Func<IEnumerable<(int count, Individual individ)>, Individual> selector)
     {
         var pop = Algorithm.Population;
         foreach (var ind in pop!)
@@ -18,7 +21,8 @@ public abstract class ParentChoosing
             .Select(x => (count: x.Genes
               .Where((x, index) => ind.Genes[index] != x)
               .Count(), individ: x));
-            ind.Partner = selector(tupleEnum);
+            var secondInd = selector(tupleEnum);
+            yield return (ind, secondInd);
         }
     }
 }

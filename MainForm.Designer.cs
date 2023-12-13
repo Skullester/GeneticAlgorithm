@@ -38,7 +38,7 @@
             button1 = new Button();
             label3 = new Label();
             comboBoxMaxMin = new ComboBox();
-            label1 = new Label();
+            timeLabel = new Label();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -145,23 +145,23 @@
             comboBoxMaxMin.Size = new Size(194, 29);
             comboBoxMaxMin.TabIndex = 12;
             // 
-            // label1
+            // timeLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(21, 274);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 56);
-            label1.TabIndex = 13;
-            label1.Text = "Время:\r\nИтерация:";
-            label1.Visible = false;
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 15F);
+            timeLabel.Location = new Point(21, 274);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(119, 28);
+            timeLabel.TabIndex = 13;
+            timeLabel.Text = "Поколение:";
+            timeLabel.Visible = false;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1767, 787);
-            Controls.Add(label1);
+            Controls.Add(timeLabel);
             Controls.Add(comboBoxMaxMin);
             Controls.Add(label3);
             Controls.Add(button1);
@@ -190,6 +190,6 @@
         private Button button1;
         private Label label3;
         private ComboBox comboBoxMaxMin;
-        private Label label1;
+        private Label timeLabel;
     }
 }

@@ -16,10 +16,18 @@ public class Population : IEnumerable<Individual>
     {
         get => individuals[index];
     }
+    public void RemoveIndividual(Individual individual)
+    {
+        individuals.Remove(individual);
+    }
+    public void RemoveIndividualAt(int index)
+    {
+        individuals.RemoveAt(index);
+    }
     public static Population GetRandomPopulation(int genesCount)
     {
         /* var individualsCount = Math.Pow(2, genesCount);*/
-        var individualsCount = 625;
+        var individualsCount = 10;
         Random rand = new();
         Population pop = new(genesCount);
         for (int i = 0; i < individualsCount; i++)

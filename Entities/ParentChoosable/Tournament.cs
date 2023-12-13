@@ -2,22 +2,40 @@
 
 public class Tournament : ParentChoosing
 {
-    public const int t = 3;
+    private const int t = 2;
     public Tournament(Algorithm algorithm) : base(algorithm)
     {
 
     }
-    public override void SetPartners()
+    public override IEnumerable<(Individual, Individual)> FindPartners()
     {
         HashSet<Individual> map = new();
         var pop = Algorithm.Population;
-        for (int i = 0; i < t; i++)
+        var rand = new Random();
+        foreach (var ind in pop!)
         {
-            if (!map.Contains(pop![i])) ;
+            List<Individual> candidates = new();
+            for (int i = 0; i < t; i++)
+            {
+                var index = rand.Next(0, pop.Count);
+                candidates.Add(pop[index]);
+            }
+            var bestCandidate = candidates.MaxBy(x => x.Value);
+            map.Add(bestCandidate!);
+        }
+        var isFirst = false;
+        Individual? tmp = default!;
+        foreach (var ind in map!)
+        {
+            if (isFirst)
+                isFirst = false;
+            else
+                yield return (ind, tmp);
+            tmp = ind;
         }
     }
     public override string ToString()
     {
-        return $"Турнирный отбор (t = {t})";
+        return $"Турнирный отбор (tournament = {t})";
     }
 }
