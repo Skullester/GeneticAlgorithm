@@ -49,7 +49,7 @@ public class Roulette : ParentChoosing
         foreach (var ind in parents)
         {
             var index = rand.Next(0, parents.Count);
-            var partner = pop[index];
+            var partner = parents[index];
             if (partner != ind)
                 yield return new(ind, partner);
         }

@@ -7,8 +7,15 @@ public class Algorithm
     public bool Fitness { get; set; }
     public void Start()
     {
-        //while (true)
-        ParentChoosable!.FindPartners().ToList();
-        Recombination!.Cross();
+        while (true)
+        {
+            var parents = ParentChoosable!.FindPartners();
+            foreach (var item in parents)
+            {
+
+            }
+
+            Recombination!.Cross();
+        }
     }
 }
