@@ -15,7 +15,8 @@ public class Panmixia : ParentChoosing
         {
             var index = rand.Next(0, count);
             var partner = pop[index];
-            yield return (ind, partner);
+            if (partner != ind)
+                yield return (ind, partner);
         }
     }
     public override string ToString()

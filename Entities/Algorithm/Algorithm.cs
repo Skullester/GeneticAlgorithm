@@ -5,11 +5,10 @@ public class Algorithm
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
     public bool Fitness { get; set; }
-
     public void Start()
     {
         //while (true)
-        ParentChoosable!.FindPartners();
+        ParentChoosable!.FindPartners().ToList();
         Recombination!.Cross();
     }
 }

@@ -22,20 +22,18 @@ public class Tournament : ParentChoosing
             }
             var bestCandidate = candidates.MaxBy(x => x.Value);
             map.Add(bestCandidate!);
+            yield return new(ind, ind);
         }
-        var isFirst = false;
-        Individual? tmp = default!;
-        foreach (var ind in map!)
-        {
-            if (isFirst)
-                isFirst = false;
-            else
-                yield return (ind, tmp);
-            tmp = ind;
-        }
+
+        //foreach (var ind in map!)
+        //{
+        //    var index = rand.Next(0, map.Count);
+        //    map.
+        //    yield return (ind, partner);
+        //}
     }
     public override string ToString()
     {
-        return $"Турнирный отбор (tournament = {t})";
+        return $"Турнирный отбор (t = {t})";
     }
 }

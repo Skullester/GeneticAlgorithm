@@ -1,7 +1,23 @@
-﻿namespace GeneticAlgorithm;
+﻿using System.Collections;
+
+namespace GeneticAlgorithm;
 
 public class Roulette : ParentChoosing
 {
+    private class Segment
+    {
+        public float Start { get; set; }
+        public float End { get; set; }
+        public Segment(float start, float end)
+        {
+            Start = start;
+            End = end;
+        }
+        public override string ToString()
+        {
+            return $"{Start} - {End}";
+        }
+    }
     public Roulette(Algorithm algorithm) : base(algorithm)
     {
     }
@@ -10,15 +26,31 @@ public class Roulette : ParentChoosing
     {
         var rand = new Random();
         var pop = Algorithm.Population;
-        var sum = pop.Sum(x => x.Value);
-        var dic = new Dictionary<int, Individual>();
-        foreach (var ind in pop)
+        float sum = pop!.Sum(x => x.Value);
+        var dic = new Dictionary<Segment, Individual>();
+        float num = 0;
+        foreach (var ind in pop!)
         {
-            var ratio = ind.Value / sum;
-            dic[ratio] = ind;
+            float ratio = ind.Value / sum;
+            Segment seg = new(num, num += ratio);
+            dic[seg] = ind;
+        }
+        for (int i = 0; i < pop.Count; i++)
+        {
+            foreach (var item in dic)
+            {
+                var seg = item.Key;
+                var numb = rand.NextDouble();
+                if (seg.Start < numb && numb < seg.End)
+        }
         }
 
-
+        //foreach (var item in dic)
+        //{
+        //    var score = rand.NextDouble();
+        //    set.Add(item.Value);
+        //    yield return
+        //}
     }
     public override string ToString()
     {

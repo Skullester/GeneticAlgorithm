@@ -5,7 +5,7 @@ public class Outbreeding : ParentChoosing
     {
 
     }
-    public override void FindPartners() => GetParents(x => x.MaxBy(x => x.count).individ);
+    public override IEnumerable<(Individual, Individual)> FindPartners() => GetParents(x => x.MaxBy(x => x.count).individ);
     public override string ToString()
     {
         return "Оутбридинг";
