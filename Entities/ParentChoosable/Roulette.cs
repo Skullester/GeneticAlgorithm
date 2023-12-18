@@ -22,7 +22,7 @@ public class Roulette : ParentChoosing
     {
     }
 
-    public override IEnumerable<(Individual, Individual)> FindPartners()
+    public override IEnumerable<Pair> FindPartners()
     {
         var rand = new Random();
         var pop = Algorithm.Population;
@@ -51,7 +51,7 @@ public class Roulette : ParentChoosing
             var index = rand.Next(0, parents.Count);
             var partner = parents[index];
             if (partner != ind)
-                yield return new(ind, partner);
+                yield return new Pair((ind, partner));
         }
     }
     public override string ToString()

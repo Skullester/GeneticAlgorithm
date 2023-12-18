@@ -9,9 +9,9 @@ public abstract class ParentChoosing
     {
         Algorithm = algorithm;
     }
-    public abstract IEnumerable<(Individual, Individual)> FindPartners();
+    public abstract IEnumerable<Pair> FindPartners();
 
-    protected IEnumerable<(Individual, Individual)> GetParents(Func<IEnumerable<(int count, Individual individ)>, Individual> selector)
+    protected IEnumerable<Pair> GetParents(Func<IEnumerable<(int count, Individual individ)>, Individual> selector)
     {
         var pop = Algorithm.Population;
         foreach (var ind in pop!)
@@ -22,7 +22,7 @@ public abstract class ParentChoosing
               .Where((x, index) => ind.Genes[index] != x)
               .Count(), individ: x));
             var secondInd = selector(tupleEnum);
-            yield return (ind, secondInd);
+            yield return new Pair((ind, secondInd));
         }
     }
 }

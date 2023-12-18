@@ -1,9 +1,10 @@
 namespace GeneticAlgorithm;
-
+using Timer = System.Windows.Forms.Timer;
 public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
     private Field? field;
+    private readonly Timer timer = new() { Interval = 100 };
     public MainForm()
     {
         InitializeComponent();
@@ -17,6 +18,10 @@ public partial class MainForm : Form
         comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
+    }
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+        field!.Life.Abort();
     }
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
@@ -38,6 +43,7 @@ public partial class MainForm : Form
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
         CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
     }
 
     private void CreateField()

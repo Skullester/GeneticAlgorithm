@@ -27,7 +27,7 @@ public class Population : IEnumerable<Individual>
     public static Population GetRandomPopulation(int genesCount)
     {
         /* var individualsCount = Math.Pow(2, genesCount);*/
-        var individualsCount = 10;
+        var individualsCount = 900;
         Random rand = new();
         Population pop = new(genesCount);
         for (int i = 0; i < individualsCount; i++)

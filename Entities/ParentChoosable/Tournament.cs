@@ -7,7 +7,7 @@ public class Tournament : ParentChoosing
     {
 
     }
-    public override IEnumerable<(Individual, Individual)> FindPartners()
+    public override IEnumerable<Pair> FindPartners()
     {
         HashSet<Individual> map = new();
         var pop = Algorithm.Population;
@@ -27,7 +27,7 @@ public class Tournament : ParentChoosing
         {
             var index = rand.Next(0, map.Count);
             var partner = map.ElementAt(index);
-            yield return new(ind, partner);
+            yield return new Pair((ind, partner));
         }
     }
     public override string ToString()

@@ -6,7 +6,7 @@ public class Panmixia : ParentChoosing
     {
 
     }
-    public override IEnumerable<(Individual, Individual)> FindPartners()
+    public override IEnumerable<Pair> FindPartners()
     {
         var pop = Algorithm.Population;
         var count = pop!.Count;
@@ -16,7 +16,7 @@ public class Panmixia : ParentChoosing
             var index = rand.Next(0, count);
             var partner = pop[index];
             if (partner != ind)
-                yield return (ind, partner);
+                yield return new Pair((ind, partner));
         }
     }
     public override string ToString()

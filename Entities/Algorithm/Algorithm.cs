@@ -12,10 +12,10 @@ public class Algorithm
             var parents = ParentChoosable!.FindPartners();
             foreach (var item in parents)
             {
-
+                Recombination!.Cross(item);
             }
 
-            Recombination!.Cross();
+
         }
     }
 }

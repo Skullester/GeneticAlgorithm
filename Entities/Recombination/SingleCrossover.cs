@@ -8,13 +8,14 @@ public class SingleCrossover : Recombination
     {
 
     }
-    public override IEnumerable<(Individual, Individual)> Cross()
+    public override IEnumerable<Pair> Cross(Pair pair)
     {
+        Pair[] pairs = default;
         var random = new Random();
         var pop = Algorithm.Population;
-        foreach (var ind in pop!)
+        foreach (var ind in pairs)
         {
-            yield return (new Individual(pop), new Individual(pop));
+            yield return new Pair((new Individual(pop), new Individual(pop)));
             //foreach (var partner in ind.Partners)
             //{
             //    var point = random.Next(0, pop!.GenesCount);
@@ -25,6 +26,6 @@ public class SingleCrossover : Recombination
     }
     public override string ToString()
     {
-        return "Одночечный кроссовер";
+        return "Одноточечный кроссовер";
     }
 }
