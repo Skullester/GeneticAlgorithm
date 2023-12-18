@@ -20,6 +20,6 @@ public class Cell
     }
     public void Shake(Size size)
     {
-        button.Size = size;
+        button.ClientSize = size;
     }
 }

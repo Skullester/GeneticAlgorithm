@@ -3,31 +3,29 @@ namespace GeneticAlgorithm;
 
 public class Life
 {
-
-    private readonly Thread life;
+    private readonly Thread cycle;
     private readonly Field field;
-
     public Life(Field field)
     {
         this.field = field;
-        life = new(StartLife);
-        life.Start();
+        cycle = new(StartLife);
+        cycle.Start();
     }
     public void Abort()
     {
-        life.Interrupt();
+        cycle.Interrupt();
     }
     public void StartLife()
     {
         Random random = new Random();
         while (true)
         {
-            foreach (var cell in field.Cells)
-            {
-                var size = random.Next(0, 50);
-                cell.Shake(new Size(size, size));
-            }
-            Thread.Sleep(200);
+            var row = random.Next(1, field.Size);
+            var column = random.Next(1, field.Size);
+            var cell = field[row, column];
+            var size = random.Next(0, 30);
+            cell.Shake(new Size(size, size));
+            Thread.Sleep(100);
         }
     }
 }

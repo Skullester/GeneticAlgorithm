@@ -8,8 +8,7 @@ public class Field
     private readonly MainForm form;
     public Life Life { get; private set; }
     public Cell[,] Cells { get; private set; }
-    private int sizeX;
-    private int sizeY;
+    public int Size { get; private set; }
     private readonly Population population;
     private TableLayoutPanel? fieldPanel;
     static Field()
@@ -34,9 +33,9 @@ public class Field
         if (form.Controls[form.Controls.Count - 1] is TableLayoutPanel)
             form.Controls.RemoveAt(form.Controls.Count - 1);
         form.Controls.Add(fieldPanel);
-        fieldPanel.RowCount = sizeX;
-        fieldPanel.ColumnCount = sizeY;
-        for (int i = 0; i < sizeX; i++)
+        fieldPanel.RowCount = Size;
+        fieldPanel.ColumnCount = Size;
+        for (int i = 0; i < Size; i++)
         {
             fieldPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             fieldPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
@@ -47,13 +46,13 @@ public class Field
     {
         //при квадрате смысл во второй координате отсутствует
         Random rand = new();
-        sizeX = sizeY = (int)Math.Sqrt(population.Count);
+        Size = (int)Math.Sqrt(population.Count);
         InitializePanel();
-        Cells = new Cell[sizeX, sizeY];
+        Cells = new Cell[Size, Size];
         int popIndex = 0;
-        for (int i = 0; i < sizeX; i++)
+        for (int i = 0; i < Size; i++)
         {
-            for (int j = 0; j < sizeX; j++)
+            for (int j = 0; j < Size; j++)
             {
                 var button = new Button();
                 var index = rand.Next(0, colors.Length);
@@ -65,10 +64,5 @@ public class Field
             }
         }
         Life = new(this);
-
     }
-
-
-
-
 }
