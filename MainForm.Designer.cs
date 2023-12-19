@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
             wayOfRecombinationLabel = new Label();
@@ -259,8 +260,9 @@
             Controls.Add(wayOfRecombinationLabel);
             Controls.Add(parentChoosingLabel);
             Controls.Add(comboBoxParents);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Генетический Алгоритм";
             ResumeLayout(false);
             PerformLayout();
         }
