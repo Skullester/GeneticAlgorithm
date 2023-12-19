@@ -21,9 +21,10 @@ public abstract class Recombination
             var gap = tails[i];
             int[] tail = pair[i].Genes[(secondGap + 1)..Population.GenesCount];
             var newArr = head.Concat(gap).Concat(tail).ToArray();
-            newIndividuals.Add(new Individual(Population, newArr));
+            pair[i].Genes = newArr;
+            //  newIndividuals.Add(new Individual(Population, newArr));
         }
-        return new Pair(newIndividuals);
+        return pair;
     }
     public Recombination(Algorithm algorithm)
     {

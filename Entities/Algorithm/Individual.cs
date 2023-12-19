@@ -5,7 +5,7 @@ public class Individual
     public int Value { get; set; } //заглушка
     public event Action<Color>? Handler;
     public Population Population { get; }
-    public int[] Genes { get; }
+    public int[] Genes { get; set; }
     public Individual(Population pop) : this(pop, new int[pop.GenesCount])
     {
     }

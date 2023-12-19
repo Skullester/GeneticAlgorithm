@@ -20,6 +20,23 @@ public class Pair
         First = list[0];
         Second = list[1];
     }
+    public void Mutate()
+    {
+        foreach (var item in this)
+        {
+            item.Genes[0] = item.Genes[0] == 1 ? 0 : 1;
+        }
+    }
+    public void Die()
+    {
+        foreach (var ind in this)
+            ind.OnDying();
+    }
+    public void AddToPopulation()
+    {
+        foreach (var ind in this)
+            ind.Population.
+    }
     public Individual this[int index]
     {
         get
