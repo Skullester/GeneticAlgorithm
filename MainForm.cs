@@ -59,8 +59,8 @@ public partial class MainForm : Form
 
     private bool ValidateParameters(bool validator = false)
     {
-        var isValidated = comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null;
-        if (!isValidated || validator)
+        var isValidated = !(comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null || validator);
+        if (!isValidated)
             MessageBox.Show("—начала создайте изначальную попул€цию!", "ќшибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return isValidated;
     }
