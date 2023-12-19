@@ -44,6 +44,8 @@
             label1 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
+            comboBoxSpeed = new ComboBox();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -213,11 +215,34 @@
             label5.TabIndex = 19;
             label5.Text = "Смерть";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 15F);
+            label6.Location = new Point(21, 305);
+            label6.Name = "label6";
+            label6.Size = new Size(101, 28);
+            label6.TabIndex = 20;
+            label6.Text = "Скорость:";
+            // 
+            // comboBoxSpeed
+            // 
+            comboBoxSpeed.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSpeed.Font = new Font("Segoe UI", 12F);
+            comboBoxSpeed.FormattingEnabled = true;
+            comboBoxSpeed.Items.AddRange(new object[] { "x1", "x2", "x5", "x10", "x20" });
+            comboBoxSpeed.Location = new Point(128, 305);
+            comboBoxSpeed.Name = "comboBoxSpeed";
+            comboBoxSpeed.Size = new Size(66, 29);
+            comboBoxSpeed.TabIndex = 21;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1767, 787);
+            Controls.Add(comboBoxSpeed);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label1);
@@ -234,7 +259,6 @@
             Controls.Add(wayOfRecombinationLabel);
             Controls.Add(parentChoosingLabel);
             Controls.Add(comboBoxParents);
-            Enabled = false;
             Name = "MainForm";
             Text = "MainForm";
             ResumeLayout(false);
@@ -259,5 +283,7 @@
         private Label label1;
         private Label label4;
         private Label label5;
+        private Label label6;
+        private ComboBox comboBoxSpeed;
     }
 }

@@ -8,6 +8,8 @@ public class Algorithm
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
     public Thread Process { get; }
+    public const int START_SPEED = 500;
+    public int Speed { get; set; } = START_SPEED;
     public Algorithm()
     {
         Process = new(Start);
@@ -21,9 +23,9 @@ public class Algorithm
         foreach (var parent in parents)
         {
             var pair = Recombination!.Cross(parent);
-            Thread.Sleep(500);
+            Thread.Sleep(Speed);
             pair.Mutate();
-            Thread.Sleep(500);
+            Thread.Sleep(Speed);
             pair.Survive();
         }
 

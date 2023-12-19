@@ -11,7 +11,7 @@ public class Field
     private TableLayoutPanel? fieldPanel;
     static Field()
     {
-        colors = [Color.DarkGreen, Color.Green, Color.LawnGreen];
+        colors = [Color.Black/*Color.DarkGreen, Color.Green, Color.LawnGreen*/];
     }
     public Field(Population population, MainForm mainForm)
     {

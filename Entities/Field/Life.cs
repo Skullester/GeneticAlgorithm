@@ -22,7 +22,7 @@ public class Life
             var row = random.Next(1, field.Size);
             var column = random.Next(1, field.Size);
             var cell = field[row, column];
-            var size = random.Next(5, 30);
+            var size = random.Next(10, 20);
             cell.Shake(new Size(size, size));
             Thread.Sleep(100);
         }

@@ -15,15 +15,22 @@ public partial class MainForm : Form
     }
     private void InitializeComboBox()
     {
-
+        comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
+        comboBoxSpeed.SelectedIndex = 0;
         comboBoxParents.SelectedValueChanged += OnComboBoxParentValueChanged;
         comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
+
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         field?.Life.Abort();
+    }
+    private void OnComboBoxSpeedChanged(object? o, EventArgs e)
+    {
+        var multiplier = int.Parse((comboBoxSpeed.SelectedItem as string)!.Split('x')[1]);
+        geneticAlgorithm.Speed = Algorithm.START_SPEED / multiplier;
     }
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
@@ -36,15 +43,13 @@ public partial class MainForm : Form
     private void GeneratePopulation(object sender, EventArgs e)
     {
         bool isValidated = ValidateParameters();
-        if (!isValidated)
+        if (isValidated)
         {
-            MessageBox.Show("”кажите параметры попул€ции!", "ќшибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            var genesCount = int.Parse(comboBoxCountOfGenes.Text);
+            geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
+            CreateField();
+            MessageBox.Show("ѕопул€ци€ успешно создана!", "”спешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        var genesCount = int.Parse(comboBoxCountOfGenes.Text);
-        geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
-        CreateField();
-        MessageBox.Show("ѕопул€ци€ успешно создана!", "”спешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void CreateField()
@@ -52,12 +57,17 @@ public partial class MainForm : Form
         field = new Field(geneticAlgorithm.Population!, this);
     }
 
-    private bool ValidateParameters()
+    private bool ValidateParameters(bool validator = false)
     {
-        return !(comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null);
+        var isValidated = comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null;
+        if (!isValidated || validator)
+            MessageBox.Show("—начала создайте изначальную попул€цию!", "ќшибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return isValidated;
     }
     private void StartCrossover(object o, EventArgs e)
     {
-        geneticAlgorithm.Process.Start();
+        bool isValidated = ValidateParameters(geneticAlgorithm.Population is null);
+        if (isValidated)
+            geneticAlgorithm.Process.Start();
     }
 }
