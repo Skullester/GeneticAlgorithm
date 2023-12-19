@@ -20,22 +20,36 @@ public class Pair
         First = list[0];
         Second = list[1];
     }
-    public void Mutate()
+
+    enum Actions
     {
-        foreach (var item in this)
+        Die, Mutate, Survive
+    }
+    private void Action(Actions action)
+    {
+        foreach (var ind in this)
         {
-            item.Genes[0] = item.Genes[0] == 1 ? 0 : 1;
+            if (action is Actions.Die)
+                ind.OnDying();
+            else if (action is Actions.Mutate)
+            {
+                ind.Genes[0] = ind.Genes[0] == 1 ? 0 : 1;
+                ind.OnMutation();
+            }
+            else ind.OnSurvive();
         }
     }
-    public void Die()
+    public void Mutate()
     {
-        foreach (var ind in this)
-            ind.OnDying();
+        Action(Actions.Mutate);
     }
-    public void AddToPopulation()
+    public void Kill()
     {
-        foreach (var ind in this)
-            ind.Population.
+        Action(Actions.Die);
+    }
+    public void Survive()
+    {
+        Action(Actions.Survive);
     }
     public Individual this[int index]
     {

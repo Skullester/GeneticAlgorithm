@@ -16,14 +16,6 @@ public class Population : IEnumerable<Individual>
     {
         get => individuals[index];
     }
-    public void RemoveIndividual(Individual individual)
-    {
-        individuals.Remove(individual);
-    }
-    public void RemoveIndividualAt(int index)
-    {
-        individuals.RemoveAt(index);
-    }
     public static Population GetRandomPopulation(int genesCount)
     {
         /* var individualsCount = Math.Pow(2, genesCount);*/

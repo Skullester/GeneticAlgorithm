@@ -58,6 +58,6 @@ public partial class MainForm : Form
     }
     private void StartCrossover(object o, EventArgs e)
     {
-        geneticAlgorithm.Start();
+        geneticAlgorithm.Process.Start();
     }
 }

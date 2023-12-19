@@ -38,7 +38,6 @@
             button1 = new Button();
             label3 = new Label();
             comboBoxMaxMin = new ComboBox();
-            timeLabel = new Label();
             hintBtnGreen = new Button();
             hintBtnYellow = new Button();
             hintBtnRed = new Button();
@@ -151,20 +150,10 @@
             comboBoxMaxMin.Size = new Size(194, 29);
             comboBoxMaxMin.TabIndex = 12;
             // 
-            // timeLabel
-            // 
-            timeLabel.AutoSize = true;
-            timeLabel.Font = new Font("Segoe UI", 15F);
-            timeLabel.Location = new Point(21, 274);
-            timeLabel.Name = "timeLabel";
-            timeLabel.Size = new Size(119, 28);
-            timeLabel.TabIndex = 13;
-            timeLabel.Text = "Поколение:";
-            timeLabel.Visible = false;
-            // 
             // hintBtnGreen
             // 
             hintBtnGreen.BackColor = Color.ForestGreen;
+            hintBtnGreen.Enabled = false;
             hintBtnGreen.ForeColor = SystemColors.ControlLightLight;
             hintBtnGreen.Location = new Point(286, 203);
             hintBtnGreen.Name = "hintBtnGreen";
@@ -175,6 +164,7 @@
             // hintBtnYellow
             // 
             hintBtnYellow.BackColor = Color.Yellow;
+            hintBtnYellow.Enabled = false;
             hintBtnYellow.ForeColor = SystemColors.ControlLightLight;
             hintBtnYellow.Location = new Point(349, 203);
             hintBtnYellow.Name = "hintBtnYellow";
@@ -185,6 +175,7 @@
             // hintBtnRed
             // 
             hintBtnRed.BackColor = Color.Red;
+            hintBtnRed.Enabled = false;
             hintBtnRed.ForeColor = SystemColors.ControlLightLight;
             hintBtnRed.Location = new Point(414, 203);
             hintBtnRed.Name = "hintBtnRed";
@@ -233,7 +224,6 @@
             Controls.Add(hintBtnRed);
             Controls.Add(hintBtnYellow);
             Controls.Add(hintBtnGreen);
-            Controls.Add(timeLabel);
             Controls.Add(comboBoxMaxMin);
             Controls.Add(label3);
             Controls.Add(button1);
@@ -244,6 +234,7 @@
             Controls.Add(wayOfRecombinationLabel);
             Controls.Add(parentChoosingLabel);
             Controls.Add(comboBoxParents);
+            Enabled = false;
             Name = "MainForm";
             Text = "MainForm";
             ResumeLayout(false);
@@ -262,7 +253,6 @@
         private Button button1;
         private Label label3;
         private ComboBox comboBoxMaxMin;
-        private Label timeLabel;
         private Button hintBtnGreen;
         private Button hintBtnYellow;
         private Button hintBtnRed;
