@@ -7,13 +7,12 @@ public class Individual
     //public HashSet<Individual> Partners { get; set; } = new();
     public Population Population { get; }
     public int[] Genes { get; }
-    public Individual(Population pop)
+    public Individual(Population pop) : this(pop, new int[pop.GenesCount])
+    {
+    }
+    public Individual(Population pop, params int[] genes)
     {
         Population = pop;
-        Genes = new int[pop.GenesCount];
-    }
-    public Individual(Population pop, params int[] genes) : this(pop)
-    {
         Genes = genes;
     }
     //public static (Individual, Individual) operator +(Individual parent1, Individual parent2)

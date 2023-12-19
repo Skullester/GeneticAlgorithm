@@ -12,19 +12,22 @@ public class SingleCrossover : Recombination
     {
         var pop = Algorithm.Population!;
         var rand = new Random();
-        var gapIndex = rand.Next(0, pop.GenesCount);
-        //pair.First.OnDying();
-        //pair.Second.OnDying();
-        yield return new Pair((new Individual(pop), new Individual(pop)));
-
-
-        //foreach (var partner in ind.Partners)
-        //{
-        //    var point = random.Next(0, pop!.GenesCount);
-        //    var newGenes = partner.Genes[1..point];
-        //    yield return (new Individual(pop), new Individual(pop));
-        //}
-
+        var gapIndex = rand.Next(0, pop.GenesCount - 1);
+        List<int[]> tails = new();
+        List<Individual> newPair = new();
+        for (int i = 1; i > -1; i--)
+        {
+            var tail = pair[i].Genes[(gapIndex + 1)..pop.GenesCount];
+            tails.Add(tail);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            var head = pair[i].Genes[0..(gapIndex + 1)];
+            var tail = tails[i];
+            var newArr = head.Concat(tail).ToArray();
+            newPair.Add(new Individual(pop, newArr));
+        }
+        yield return new Pair(newPair);
     }
     public override string ToString()
     {

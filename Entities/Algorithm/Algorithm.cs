@@ -9,10 +9,10 @@ public class Algorithm
     {
         //while (true)
         //{
-        var parents = ParentChoosable!.FindPartners();
-        foreach (var item in parents)
+        var parents = ParentChoosable!.FindPartners().ToList();
+        foreach (var parent in parents)
         {
-            Recombination!.Cross(item).Mutate();
+            Recombination!.Cross(parent).Mutate();
         }
 
 
