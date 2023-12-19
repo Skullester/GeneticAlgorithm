@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GeneticAlgorithm;
+﻿namespace GeneticAlgorithm;
 
 public abstract class ParentChoosing
 {
@@ -18,9 +16,7 @@ public abstract class ParentChoosing
         {
             var tupleEnum = pop
             .Where(indiv => indiv != ind)
-            .Select(x => (count: x.Genes
-              .Where((x, index) => ind.Genes[index] != x)
-              .Count(), individ: x));
+            .Select(x => (count: x.Genes.Where((x, index) => ind.Genes[index] != x).Count(), individ: x));
             var secondInd = selector(tupleEnum);
             yield return new Pair((ind, secondInd));
         }

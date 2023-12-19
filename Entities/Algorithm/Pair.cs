@@ -16,7 +16,7 @@ public class Pair
     }
     public Pair(List<Individual> list)
     {
-        if (list.Count > 2) throw new ArgumentException();
+        if (list.Count != 2) throw new ArgumentException();
         First = list[0];
         Second = list[1];
     }
@@ -36,5 +36,9 @@ public class Pair
     {
         yield return First;
         yield return Second;
+    }
+    public override string ToString()
+    {
+        return $"{First}|{Second}";
     }
 }

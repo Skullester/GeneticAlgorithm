@@ -4,7 +4,6 @@ public class Individual
 {
     public int Value { get; set; } //заглушка
     public event Action<Color>? Handler;
-    //public HashSet<Individual> Partners { get; set; } = new();
     public Population Population { get; }
     public int[] Genes { get; }
     public Individual(Population pop) : this(pop, new int[pop.GenesCount])
@@ -15,13 +14,6 @@ public class Individual
         Population = pop;
         Genes = genes;
     }
-    //public static (Individual, Individual) operator +(Individual parent1, Individual parent2)
-    //{
-    //    return Population.RecombinationType.Cross();
-    //    //     return (new Individual(new Population(1)), new Individual(new Population(1)));//temp
-    //}
-    //public static (Individual, Individual) Cross(Individual parent1, Individual parent2) => parent1 + parent2;
-    //public (Individual, Individual) CrossWith(Individual parent2) => this + parent2;
     public void OnDying()
     {
         Handler?.Invoke(Color.Red);
@@ -31,7 +23,7 @@ public class Individual
     {
         Handler?.Invoke(Color.Green);
     }
-    public void OnCrossing()
+    public void OnMutation()
     {
         Handler?.Invoke(Color.Yellow);
     }
