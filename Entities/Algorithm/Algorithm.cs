@@ -7,15 +7,15 @@ public class Algorithm
     public bool Fitness { get; set; }
     public void Start()
     {
-        while (true)
+        //while (true)
+        //{
+        var parents = ParentChoosable!.FindPartners();
+        foreach (var item in parents)
         {
-            var parents = ParentChoosable!.FindPartners();
-            foreach (var item in parents)
-            {
-                Recombination!.Cross(item);
-            }
-
-
+            Recombination!.Cross(item).Mutate();
         }
+
+
+        //}
     }
 }

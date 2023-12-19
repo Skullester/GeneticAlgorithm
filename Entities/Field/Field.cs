@@ -1,13 +1,11 @@
-﻿using System.Windows.Forms;
-
-namespace GeneticAlgorithm;
+﻿namespace GeneticAlgorithm;
 
 public class Field
 {
     private readonly static Color[] colors;
     private readonly MainForm form;
-    public Life Life { get; private set; }
-    public Cell[,] Cells { get; private set; }
+    public Life? Life { get; private set; }
+    public Cell[,]? Cells { get; private set; }
     public int Size { get; private set; }
     private readonly Population population;
     private TableLayoutPanel? fieldPanel;
@@ -23,8 +21,8 @@ public class Field
     }
     public Cell this[int row, int column]
     {
-        get => Cells[row, column];
-        set => Cells[row, column] = value;
+        get => Cells![row, column];
+        set => Cells![row, column] = value;
     }
     private void InitializePanel()
     {
@@ -44,7 +42,6 @@ public class Field
     }
     private void FillField()
     {
-        //при квадрате смысл во второй координате отсутствует
         Random rand = new();
         Size = (int)Math.Sqrt(population.Count);
         InitializePanel();

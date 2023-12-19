@@ -1,10 +1,12 @@
-namespace GeneticAlgorithm;
 using Timer = System.Windows.Forms.Timer;
+
+namespace GeneticAlgorithm;
+
 public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
     private Field? field;
-    private readonly Timer timer = new() { Interval = 100 };
+    private readonly Timer timer = new();
     public MainForm()
     {
         InitializeComponent();
@@ -21,7 +23,7 @@ public partial class MainForm : Form
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
-        field!.Life.Abort();
+        field?.Life.Abort();
     }
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
@@ -43,7 +45,6 @@ public partial class MainForm : Form
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
         CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
     }
 
     private void CreateField()
