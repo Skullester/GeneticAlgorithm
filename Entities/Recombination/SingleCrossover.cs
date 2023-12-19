@@ -8,27 +8,11 @@ public class SingleCrossover : Recombination
     {
 
     }
-    public override IEnumerable<Pair> Cross(Pair pair)
+    public override Pair Cross(Pair pair)
     {
-        const int pairCount = 2;
-        var pop = Algorithm.Population!;
-        var rand = new Random();
-        var gapIndex = rand.Next(0, pop.GenesCount - 1) + 1;
-        List<int[]> tails = new();
-        List<Individual> newPair = new();
-        for (int i = pairCount - 1; i > -1; i--)
-        {
-            var tail = pair[i].Genes[gapIndex..pop.GenesCount];
-            tails.Add(tail);
-        }
-        for (int i = 0; i < pairCount; i++)
-        {
-            var head = pair[i].Genes[0..gapIndex];
-            var tail = tails[i];
-            var newArr = head.Concat(tail).ToArray();
-            newPair.Add(new Individual(pop, newArr));
-        }
-        yield return new Pair(newPair);
+        var rand = Algorithm.Random;
+        var gapIndex = rand.Next(0, Population.GenesCount - 1);
+        return GetGap(pair, gapIndex, Population.GenesCount - 1);
     }
     public override string ToString()
     {

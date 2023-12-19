@@ -82,9 +82,9 @@
             comboBoxRecombinations.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRecombinations.Font = new Font("Segoe UI", 12F);
             comboBoxRecombinations.FormattingEnabled = true;
-            comboBoxRecombinations.Location = new Point(345, 43);
+            comboBoxRecombinations.Location = new Point(336, 43);
             comboBoxRecombinations.Name = "comboBoxRecombinations";
-            comboBoxRecombinations.Size = new Size(210, 29);
+            comboBoxRecombinations.Size = new Size(241, 29);
             comboBoxRecombinations.TabIndex = 3;
             // 
             // btnConfirm

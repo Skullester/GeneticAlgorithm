@@ -1,6 +1,7 @@
 ﻿namespace GeneticAlgorithm;
 public class Algorithm
 {
+    public Random Random { get; } = new();
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }

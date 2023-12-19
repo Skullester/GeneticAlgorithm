@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace GeneticAlgorithm;
+﻿namespace GeneticAlgorithm;
 
 public class DualCrossover : Recombination
 {
@@ -8,22 +6,12 @@ public class DualCrossover : Recombination
     {
 
     }
-    public override IEnumerable<Pair> Cross(Pair pair)
+    public override Pair Cross(Pair pair)
     {
-        var random = new Random();
-        var pop = Algorithm.Population;
-        foreach (var ind in pop!)
-        {
-            yield return new Pair((new Individual(pop), new Individual(pop)));
-            //foreach (var partner in ind.Partners)
-            //{
-            //    var point = random.Next(0, pop!.GenesCount);
-            //    var newGenes = partner.Genes[1..point];
-            //    yield return (new Individual(pop), new Individual(pop));
-            //}
-        }
-
-
+        var rand = Algorithm.Random;
+        int firstGap = rand.Next(0, Population.GenesCount / 2 + 1);
+        int secondGap = rand.Next(firstGap + 1, Population.GenesCount);
+        return GetGap(pair, firstGap, secondGap);
     }
     public override string ToString()
     {

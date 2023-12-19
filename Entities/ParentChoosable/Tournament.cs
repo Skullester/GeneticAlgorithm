@@ -10,15 +10,14 @@ public class Tournament : ParentChoosing
     public override IEnumerable<Pair> FindPartners()
     {
         HashSet<Individual> map = new();
-        var pop = Algorithm.Population;
-        var rand = new Random();
-        foreach (var ind in pop!)
+        var rand = Algorithm.Random;
+        foreach (var ind in Population)
         {
             List<Individual> candidates = new();
             for (int i = 0; i < t; i++)
             {
-                var index = rand.Next(0, pop.Count);
-                candidates.Add(pop[index]);
+                var index = rand.Next(0, Population.Count);
+                candidates.Add(Population[index]);
             }
             var bestCandidate = candidates.MaxBy(x => x.Value);
             map.Add(bestCandidate!);
