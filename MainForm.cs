@@ -15,13 +15,16 @@ public partial class MainForm : Form
     }
     private void InitializeComboBox()
     {
-        comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
-        comboBoxSpeed.SelectedIndex = 0;
-        comboBoxParents.SelectedValueChanged += OnComboBoxParentValueChanged;
-        comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
-
+        comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
+        comboBoxParents.SelectedValueChanged += OnComboBoxParentValueChanged;
+        comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
+        foreach (var item in Controls)
+        {
+            if (item is ComboBox cb)
+                cb.SelectedIndex = 0;
+        }
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
@@ -69,5 +72,10 @@ public partial class MainForm : Form
         bool isValidated = ValidateParameters(geneticAlgorithm.Population is null);
         if (isValidated)
             geneticAlgorithm.Process.Start();
+    }
+
+    private void Restart(object sender, EventArgs e)
+    {
+        Application.Restart();
     }
 }

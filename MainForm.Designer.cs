@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
@@ -47,6 +50,10 @@
             label5 = new Label();
             label6 = new Label();
             comboBoxSpeed = new ComboBox();
+            buttonRestart = new Button();
+            label7 = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+
             SuspendLayout();
             // 
             // comboBoxParents
@@ -237,11 +244,51 @@
             comboBoxSpeed.Size = new Size(66, 29);
             comboBoxSpeed.TabIndex = 21;
             // 
+            // buttonRestart
+            // 
+            buttonRestart.Font = new Font("Segoe UI", 15F);
+            buttonRestart.Location = new Point(12, 570);
+            buttonRestart.Name = "buttonRestart";
+            buttonRestart.Size = new Size(170, 54);
+            buttonRestart.TabIndex = 22;
+            buttonRestart.Text = "Перезапустить";
+            buttonRestart.UseVisualStyleBackColor = true;
+            buttonRestart.Click += Restart;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 15F);
+            label7.Location = new Point(271, 111);
+            label7.Name = "label7";
+            label7.Size = new Size(219, 28);
+            label7.TabIndex = 23;
+            label7.Text = "y = f(x) = 3x^3 - 2x + 5;";
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(225, 520);
+            chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(471, 274);
+            chart1.TabIndex = 24;
+            chart1.Text = "chart1";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1767, 787);
+            ClientSize = new Size(1804, 801);
+            Controls.Add(chart1);
+            Controls.Add(label7);
+            Controls.Add(buttonRestart);
             Controls.Add(comboBoxSpeed);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -263,6 +310,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "Генетический Алгоритм";
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,5 +335,8 @@
         private Label label5;
         private Label label6;
         private ComboBox comboBoxSpeed;
+        private Button buttonRestart;
+        private Label label7;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

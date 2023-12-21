@@ -16,3 +16,7 @@ H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\Ge
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\ref\GeneticAlgorithm.dll
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.Properties.Resources.resources
 H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.sourcelink.json
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.csproj.AssemblyReference.cache
+H:\Учёба\3 курс\ИОИМО\GeneticAlgorithm\obj\Debug\net8.0-windows\GeneticAlgorithm.csproj.CopyComplete

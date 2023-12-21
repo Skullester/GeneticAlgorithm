@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "S2GJJ82f3ihFyBJ3HLnMXlMztEVpSPIHdDwmNow8DJ5zQCwj1smGloNTo62uA1dTjc0QAT8zvNGFA2VRPsJgXw==",
+  "dgSpecHash": "hZGzNK35y/btGSXtah27e1iUiMAm/Xq2jaVAaTckJNtcioQWkgfUrpE2RSpjHzPDrx8I3EgEfWGPaV/fpFuE/w==",
   "success": true,
   "projectFilePath": "H:\\Учёба\\3 курс\\ИОИМО\\GeneticAlgorithm\\GeneticAlgorithm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mrsam\\.nuget\\packages\\winforms.datavisualization\\1.9.1\\winforms.datavisualization.1.9.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -27,4 +27,8 @@
     <Folder Include="Entities\Extensions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
+  </ItemGroup>
+
 </Project>
