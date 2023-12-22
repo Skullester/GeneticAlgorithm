@@ -16,7 +16,7 @@ public abstract class ParentChoosing
         {
             var tupleEnum = Population
             .Where(indiv => indiv != ind)
-            .Select(x => (count: x.Genes.Where((x, index) => ind.Genes[index] != x).Count(), individ: x));
+            .Select(x => (count: x.Where((x, index) => ind[index] != x).Count(), individ: x));
             var secondInd = selector(tupleEnum);
             yield return new Pair((ind, secondInd));
         }

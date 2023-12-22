@@ -33,7 +33,7 @@ public class Pair
                 ind.OnDying();
             else if (action is Actions.Mutate)
             {
-                ind.Genes[0] = ind.Genes[0] == 1 ? 0 : 1;
+                ind[0] = ind[0] == 1 ? 0 : 1;
                 ind.OnMutation();
             }
             else ind.OnSurvive();

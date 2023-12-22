@@ -52,8 +52,8 @@
             comboBoxSpeed = new ComboBox();
             buttonRestart = new Button();
             label7 = new Label();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-
+            chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -265,28 +265,32 @@
             label7.TabIndex = 23;
             label7.Text = "y = f(x) = 3x^3 - 2x + 5;";
             // 
-            // chart1
+            // chart
             // 
             chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
+            chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(225, 520);
-            chart1.Name = "chart1";
+            chart.Legends.Add(legend1);
+            chart.Location = new Point(506, 95);
+            chart.Name = "chart";
+            series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
+            series1.MarkerBorderWidth = 5;
             series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(471, 274);
-            chart1.TabIndex = 24;
-            chart1.Text = "chart1";
+            chart.Series.Add(series1);
+            chart.Size = new Size(1227, 565);
+            chart.TabIndex = 24;
+            chart.Text = "chart";
+            chart.Visible = false;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
-            Controls.Add(chart1);
+            Controls.Add(chart);
             Controls.Add(label7);
             Controls.Add(buttonRestart);
             Controls.Add(comboBoxSpeed);
@@ -310,7 +314,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "Генетический Алгоритм";
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -337,6 +341,6 @@
         private ComboBox comboBoxSpeed;
         private Button buttonRestart;
         private Label label7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
     }
 }

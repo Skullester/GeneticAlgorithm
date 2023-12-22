@@ -12,6 +12,7 @@ public partial class MainForm : Form
         InitializeComponent();
         geneticAlgorithm = new();
         InitializeComboBox();
+        //   FitnessFunction func = new();
     }
     private void InitializeComboBox()
     {

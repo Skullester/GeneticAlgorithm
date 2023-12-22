@@ -8,10 +8,12 @@ public class Algorithm
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
     public Thread Process { get; }
-    public const int START_SPEED = 500;
+    public const int START_SPEED = 40;
     public int Speed { get; set; } = START_SPEED;
+    private readonly Fitness fitness;
     public Algorithm()
     {
+        fitness = new(new Rastrigin(10));
         Process = new(Start);
     }
     public bool Fitness { get; set; }

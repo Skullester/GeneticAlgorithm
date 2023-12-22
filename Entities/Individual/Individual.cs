@@ -1,6 +1,8 @@
-﻿namespace GeneticAlgorithm;
+﻿using System.Collections;
 
-public class Individual
+namespace GeneticAlgorithm;
+
+public class Individual : IEnumerable<int>
 {
     public int Value { get; set; } //заглушка
     public event Action<Color>? Handler;
@@ -8,6 +10,17 @@ public class Individual
     internal int[] Genes { get; set; }
     public Individual(Population pop) : this(pop, new int[pop.GenesCount])
     {
+    }
+    public int this[int index]
+    {
+        get
+        {
+            return Genes[index];
+        }
+        set
+        {
+            Genes[index] = value;
+        }
     }
     public Individual(Population pop, params int[] genes)
     {
@@ -29,5 +42,15 @@ public class Individual
     public override string ToString()
     {
         return string.Join("", Genes);
+    }
+
+    public IEnumerator<int> GetEnumerator()
+    {
+        return ((IEnumerable<int>)Genes).GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

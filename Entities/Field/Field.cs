@@ -4,7 +4,7 @@ public class Field
 {
     private readonly static Color[] colors;
     private readonly MainForm form;
-    public Life? Life { get; private set; }
+    public Life Life { get; private set; } = null!;
     public Cell[,]? Cells { get; private set; }
     public int Size { get; private set; }
     private readonly Population population;

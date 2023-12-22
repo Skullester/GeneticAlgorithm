@@ -27,7 +27,7 @@ public class Population : IEnumerable<Individual>
             Individual individual = new(pop);
             for (int j = 0; j < genesCount; j++)
             {
-                individual.Genes[j] = rand.Next(0, 1 + 1);
+                individual[j] = rand.Next(0, 1 + 1);
             }
             individual.Value = rand.Next(0, 128);
             pop.individuals.Add(individual);
