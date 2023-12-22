@@ -26,6 +26,7 @@ public static class Fitness
         string yBinary = str.Substring(length);
         var x = BinaryDecoder.Normalize(MAX, MIN, xBinary);
         var y = BinaryDecoder.Normalize(MAX, MIN, yBinary);
+
         var fitness = function.GetValue(x, y);
         if (fitness < FitnessValue) // ищем минимум
             FitnessValue = fitness;

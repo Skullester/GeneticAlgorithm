@@ -11,11 +11,12 @@ public partial class MainForm : Form
     {
         InitializeComponent();
         geneticAlgorithm = new(this);
-        InitializeComboBox();
+        Initialize();
         //   FitnessFunction func = new();
     }
-    private void InitializeComboBox()
+    private void Initialize()
     {
+        checkBoxAccelerated.CheckedChanged += OnCheckBoxAccelerated;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
         comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
@@ -39,7 +40,12 @@ public partial class MainForm : Form
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {
         var multiplier = int.Parse((comboBoxSpeed.SelectedItem as string)!.Split('x')[1]);
-        geneticAlgorithm.Speed = Algorithm.START_SPEED / multiplier;
+        geneticAlgorithm.Multiplier = multiplier;
+        geneticAlgorithm.SetSpeed();
+    }
+    private void OnCheckBoxAccelerated(object? o, EventArgs e)
+    {
+        geneticAlgorithm.SetSpeed();
     }
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
@@ -56,7 +62,6 @@ public partial class MainForm : Form
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount, indCount);
         CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
     }
 
     private void CreateField()

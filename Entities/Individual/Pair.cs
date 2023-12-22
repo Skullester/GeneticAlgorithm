@@ -2,9 +2,13 @@
 
 public class Pair
 {
-    private Random random = new Random();
     public Individual First { get; }
     public Individual Second { get; }
+    public static readonly IAction[] Actions;
+    static Pair()
+    {
+        Actions = [new Dying(), new Survival(), new Mutation(), new Selection(), new Reset()];
+    }
     public Pair((Individual, Individual) pairTuple)
     {
         First = pairTuple.Item1;
@@ -22,50 +26,31 @@ public class Pair
         Second = list[1];
     }
 
-    enum Actions
-    {
-        Die, Mutate, Survive, Reset, Fitness
-    }
-    private void Action(Actions action)
+    private void Action(IAction action)
     {
         foreach (var ind in this)
-        {
-            if (action is Actions.Die)
-                ind.OnDying();
-            else if (action is Actions.Mutate)
-            {
-                if (random.NextDouble() < 0.2)
-                {
-                    ind[0] = ind[0] == 1 ? 0 : 1;
-                    ind.OnMutation();
-                }
-            }
-            else if (action is Actions.Reset)
-                ind.OnReset();
-            else if (action is Actions.Fitness)
-                ind.Fitness = Fitness.GetFitness(ind);
-            else ind.OnSurvive();
-        }
-    }
-    public void Fitnes()
-    {
-        Action(Actions.Fitness);
-    }
-    public void Reset()
-    {
-        Action(Actions.Reset);
-    }
-    public void Mutate()
-    {
-        Action(Actions.Mutate);
+            action.Act(ind);
     }
     public void Kill()
     {
-        Action(Actions.Die);
+        Action(Actions[0]);
     }
     public void Survive()
     {
-        Action(Actions.Survive);
+        Action(Actions[1]);
+    }
+    public void Mutate()
+    {
+        Action(Actions[2]);
+    }
+
+    public void Select()
+    {
+        Action(Actions[3]);
+    }
+    public void Reset()
+    {
+        Action(Actions[4]);
     }
     public Individual this[int index]
     {

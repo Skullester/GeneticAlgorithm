@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-
-namespace GeneticAlgorithm;
+﻿namespace GeneticAlgorithm;
 public class Algorithm
 {
+    public int Multiplier { get; set; }
     private readonly MainForm mainForm;
     public int Generation { get; private set; }
     public Random Random { get; } = new();
@@ -13,18 +12,30 @@ public class Algorithm
     public const int START_SPEED = 40;
     private int speed = START_SPEED;
     private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
-    public int Speed { get => speed; set { if (IsAccelerated) speed = 0; else speed = value; } }
-
-    // private readonly Fitness fitness;
+    public int Speed
+    {
+        get => speed;
+        set
+        {
+            if (IsAccelerated)
+                speed = 0;
+            else
+                speed = value;
+        }
+    }
     public Algorithm(MainForm mainForm)
     {
         Process = new(Start);
         this.mainForm = mainForm;
     }
-    public bool Fitness { get; set; }
+    public void SetSpeed()
+    {
+        Speed = START_SPEED / Multiplier;
+    }
+
     public void Start()
     {
-        while (GeneticAlgorithm.Fitness.FitnessValue > 0.01)
+        while (Fitness.FitnessValue > 0.01)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
             foreach (var parent in parents)
@@ -34,7 +45,7 @@ public class Algorithm
                 pair.Mutate();
                 Thread.Sleep(Speed);
                 pair.Survive();
-                pair.Fitnes();
+                pair.Select();
             }
             foreach (var parent in parents)
             {

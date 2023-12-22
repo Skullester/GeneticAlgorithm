@@ -27,7 +27,7 @@ public class Field
     private void InitializePanel()
     {
         fieldPanel = new TableLayoutPanel();
-        fieldPanel.Size = new Size(700, 700);
+        fieldPanel.Size = new Size(600, 600);
         if (form.Controls[form.Controls.Count - 1] is TableLayoutPanel)
             form.Controls.RemoveAt(form.Controls.Count - 1);
         form.Controls.Add(fieldPanel);

@@ -261,9 +261,9 @@
             labelGeneration.Font = new Font("Segoe UI", 15F);
             labelGeneration.Location = new Point(582, 78);
             labelGeneration.Name = "labelGeneration";
-            labelGeneration.Size = new Size(234, 56);
+            labelGeneration.Size = new Size(234, 28);
             labelGeneration.TabIndex = 25;
-            labelGeneration.Text = "Поколение: 0 Оптимум: \r\n\r\n";
+            labelGeneration.Text = "Поколение: 0 Оптимум: \r\n";
             // 
             // comboBoxIndividuals
             // 
