@@ -29,7 +29,7 @@ public class Population : IEnumerable<Individual>
             {
                 individual[j] = rand.Next(0, 1 + 1);
             }
-            individual.Value = rand.Next(0, 128);
+            individual.Fitness = rand.Next(0, 128);
             pop.individuals.Add(individual);
         }
         return pop;

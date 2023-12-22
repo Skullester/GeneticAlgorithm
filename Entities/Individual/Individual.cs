@@ -4,7 +4,7 @@ namespace GeneticAlgorithm;
 
 public class Individual : IEnumerable<int>
 {
-    public int Value { get; set; } //заглушка
+    public int Fitness { get; set; } //заглушка
     public event Action<Color>? Handler;
     public Population Population { get; }
     internal int[] Genes { get; set; }

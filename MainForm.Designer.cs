@@ -147,7 +147,7 @@
             label3.Name = "label3";
             label3.Size = new Size(427, 28);
             label3.TabIndex = 11;
-            label3.Text = "У каждой особи есть поле \"Value\".  Мы ищем:";
+            label3.Text = "У каждой особи есть поле \"Fitness\".  Мы ищем:";
             // 
             // comboBoxMaxMin
             // 

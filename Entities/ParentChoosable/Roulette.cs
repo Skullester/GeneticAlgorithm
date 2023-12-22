@@ -25,12 +25,12 @@ public class Roulette : ParentChoosing
     public override IEnumerable<Pair> FindPartners()
     {
         var rand = Algorithm.Random;
-        float sum = Population!.Sum(x => x.Value);
+        float sum = Population!.Sum(x => x.Fitness);
         var dic = new Dictionary<Segment, Individual>();
         float num = 0;
         foreach (var ind in Population!)
         {
-            float ratio = ind.Value / sum;
+            float ratio = ind.Fitness / sum;
             Segment seg = new(num, num += ratio);
             dic[seg] = ind;
         }

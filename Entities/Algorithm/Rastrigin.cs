@@ -2,8 +2,6 @@
 
 public class Rastrigin : IFunction
 {
-    private const double MIN = -5.12;
-    private const double MAX = 5.12;
     private readonly int A;
     public Rastrigin(int a)
     {
