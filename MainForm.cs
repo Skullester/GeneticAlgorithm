@@ -27,15 +27,14 @@ public partial class MainForm : Form
                 cb.SelectedIndex = 0;
         }
     }
-    public void UpdateText(string? text = default)
+    public void UpdateText()
     {
-        if (text is null)
-            text = "Поколение: " + geneticAlgorithm.Generation;
-        //labelGeneration.Text = text;
+        labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + Fitness.FitnessValue;
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         field?.Life.Abort();
+        geneticAlgorithm.Process.Interrupt();
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {
@@ -52,14 +51,12 @@ public partial class MainForm : Form
     }
     private void GeneratePopulation(object sender, EventArgs e)
     {
-        bool isValidated = ValidateParameters();
-        if (isValidated)
-        {
-            var genesCount = int.Parse(comboBoxCountOfGenes.Text);
-            geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount);
-            CreateField();
-            MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        var genesCount = int.Parse(comboBoxCountOfGenes.Text);
+        var indCount = int.Parse(comboBoxIndividuals.Text);
+        geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount, indCount);
+        CreateField();
+        MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
     }
 
     private void CreateField()
@@ -67,16 +64,16 @@ public partial class MainForm : Form
         field = new Field(geneticAlgorithm.Population!, this);
     }
 
-    private bool ValidateParameters(bool validator = false)
+    private bool ValidateParameters()
     {
-        var isValidated = !(comboBoxCountOfGenes.SelectedItem is null || comboBoxParents.SelectedItem is null || comboBoxRecombinations.SelectedItem is null || validator);
+        var isValidated = geneticAlgorithm.Population is not null;
         if (!isValidated)
             MessageBox.Show("Сначала создайте изначальную популяцию!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return isValidated;
     }
     private void StartCrossover(object o, EventArgs e)
     {
-        bool isValidated = ValidateParameters(geneticAlgorithm.Population is null);
+        bool isValidated = ValidateParameters();
         if (isValidated)
             geneticAlgorithm.Process.Start();
     }

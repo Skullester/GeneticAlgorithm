@@ -6,23 +6,22 @@ public class Population : IEnumerable<Individual>
 {
     public int GenesCount { get; }
     private readonly List<Individual> individuals;
-    public int Count => individuals.Count;
-    public Population(int genesCount)
+    public int Count { get; }
+    public Population(int genesCount, int indCount)
     {
         GenesCount = genesCount;
+        Count = indCount;
         individuals = new();
     }
     public Individual this[int index]
     {
         get => individuals[index];
     }
-    public static Population GetRandomPopulation(int genesCount)
+    public static Population GetRandomPopulation(int genesCount, int indCount)
     {
-        /* var individualsCount = Math.Pow(2, genesCount);*/
-        var individualsCount = 900;
         Random rand = new();
-        Population pop = new(genesCount);
-        for (int i = 0; i < individualsCount; i++)
+        Population pop = new(genesCount, indCount);
+        for (int i = 0; i < pop.Count; i++)
         {
             Individual individual = new(pop);
             for (int j = 0; j < genesCount; j++)

@@ -51,6 +51,9 @@
             buttonRestart = new Button();
             chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             labelGeneration = new Label();
+            comboBoxIndividuals = new ComboBox();
+            label1 = new Label();
+            checkBoxAccelerated = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             SuspendLayout();
             // 
@@ -142,7 +145,7 @@
             hintBtnGreen.BackColor = Color.ForestGreen;
             hintBtnGreen.Enabled = false;
             hintBtnGreen.ForeColor = SystemColors.ControlLightLight;
-            hintBtnGreen.Location = new Point(286, 132);
+            hintBtnGreen.Location = new Point(629, 38);
             hintBtnGreen.Name = "hintBtnGreen";
             hintBtnGreen.Size = new Size(25, 25);
             hintBtnGreen.TabIndex = 14;
@@ -153,7 +156,7 @@
             hintBtnYellow.BackColor = Color.Yellow;
             hintBtnYellow.Enabled = false;
             hintBtnYellow.ForeColor = SystemColors.ControlLightLight;
-            hintBtnYellow.Location = new Point(349, 132);
+            hintBtnYellow.Location = new Point(692, 38);
             hintBtnYellow.Name = "hintBtnYellow";
             hintBtnYellow.Size = new Size(25, 25);
             hintBtnYellow.TabIndex = 15;
@@ -164,7 +167,7 @@
             hintBtnRed.BackColor = Color.Red;
             hintBtnRed.Enabled = false;
             hintBtnRed.ForeColor = SystemColors.ControlLightLight;
-            hintBtnRed.Location = new Point(414, 132);
+            hintBtnRed.Location = new Point(757, 38);
             hintBtnRed.Name = "hintBtnRed";
             hintBtnRed.Size = new Size(25, 25);
             hintBtnRed.TabIndex = 16;
@@ -173,30 +176,30 @@
             // labelMutation
             // 
             labelMutation.AutoSize = true;
-            labelMutation.Font = new Font("Segoe UI", 10F);
-            labelMutation.Location = new Point(327, 110);
+            labelMutation.Font = new Font("Segoe UI", 12F);
+            labelMutation.Location = new Point(670, 16);
             labelMutation.Name = "labelMutation";
-            labelMutation.Size = new Size(65, 19);
+            labelMutation.Size = new Size(74, 21);
             labelMutation.TabIndex = 17;
             labelMutation.Text = "Мутация";
             // 
             // labelSelection
             // 
             labelSelection.AutoSize = true;
-            labelSelection.Font = new Font("Segoe UI", 10F);
-            labelSelection.Location = new Point(271, 110);
+            labelSelection.Font = new Font("Segoe UI", 12F);
+            labelSelection.Location = new Point(608, 16);
             labelSelection.Name = "labelSelection";
-            labelSelection.Size = new Size(50, 19);
+            labelSelection.Size = new Size(56, 21);
             labelSelection.TabIndex = 18;
             labelSelection.Text = "Отбор";
             // 
             // labelDeath
             // 
             labelDeath.AutoSize = true;
-            labelDeath.Font = new Font("Segoe UI", 10F);
-            labelDeath.Location = new Point(398, 110);
+            labelDeath.Font = new Font("Segoe UI", 12F);
+            labelDeath.Location = new Point(741, 16);
             labelDeath.Name = "labelDeath";
-            labelDeath.Size = new Size(56, 19);
+            labelDeath.Size = new Size(63, 21);
             labelDeath.TabIndex = 19;
             labelDeath.Text = "Смерть";
             // 
@@ -204,7 +207,7 @@
             // 
             labelSpeed.AutoSize = true;
             labelSpeed.Font = new Font("Segoe UI", 15F);
-            labelSpeed.Location = new Point(21, 305);
+            labelSpeed.Location = new Point(12, 261);
             labelSpeed.Name = "labelSpeed";
             labelSpeed.Size = new Size(101, 28);
             labelSpeed.TabIndex = 20;
@@ -216,7 +219,7 @@
             comboBoxSpeed.Font = new Font("Segoe UI", 12F);
             comboBoxSpeed.FormattingEnabled = true;
             comboBoxSpeed.Items.AddRange(new object[] { "x1", "x2", "x5", "x10", "x20" });
-            comboBoxSpeed.Location = new Point(128, 305);
+            comboBoxSpeed.Location = new Point(119, 261);
             comboBoxSpeed.Name = "comboBoxSpeed";
             comboBoxSpeed.Size = new Size(66, 29);
             comboBoxSpeed.TabIndex = 21;
@@ -256,17 +259,52 @@
             // 
             labelGeneration.AutoSize = true;
             labelGeneration.Font = new Font("Segoe UI", 15F);
-            labelGeneration.Location = new Point(271, 179);
+            labelGeneration.Location = new Point(582, 78);
             labelGeneration.Name = "labelGeneration";
-            labelGeneration.Size = new Size(135, 28);
+            labelGeneration.Size = new Size(234, 56);
             labelGeneration.TabIndex = 25;
-            labelGeneration.Text = "Поколение: 0";
+            labelGeneration.Text = "Поколение: 0 Оптимум: \r\n\r\n";
+            // 
+            // comboBoxIndividuals
+            // 
+            comboBoxIndividuals.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxIndividuals.Font = new Font("Segoe UI", 12F);
+            comboBoxIndividuals.FormattingEnabled = true;
+            comboBoxIndividuals.Items.AddRange(new object[] { "32", "64", "128", "256", "512", "1024" });
+            comboBoxIndividuals.Location = new Point(336, 129);
+            comboBoxIndividuals.Name = "comboBoxIndividuals";
+            comboBoxIndividuals.Size = new Size(210, 29);
+            comboBoxIndividuals.TabIndex = 26;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 17F);
+            label1.Location = new Point(327, 95);
+            label1.Name = "label1";
+            label1.Size = new Size(221, 31);
+            label1.TabIndex = 27;
+            label1.Text = "Количество особей:";
+            // 
+            // checkBoxAccelerated
+            // 
+            checkBoxAccelerated.AutoSize = true;
+            checkBoxAccelerated.Font = new Font("Segoe UI", 15F);
+            checkBoxAccelerated.Location = new Point(21, 311);
+            checkBoxAccelerated.Name = "checkBoxAccelerated";
+            checkBoxAccelerated.Size = new Size(153, 32);
+            checkBoxAccelerated.TabIndex = 28;
+            checkBoxAccelerated.Text = "Без задержек";
+            checkBoxAccelerated.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(checkBoxAccelerated);
+            Controls.Add(label1);
+            Controls.Add(comboBoxIndividuals);
             Controls.Add(labelGeneration);
             Controls.Add(chart);
             Controls.Add(buttonRestart);
@@ -315,5 +353,8 @@
         private Button buttonRestart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private Label labelGeneration;
+        private ComboBox comboBoxIndividuals;
+        private Label label1;
+        public CheckBox checkBoxAccelerated;
     }
 }

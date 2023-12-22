@@ -27,7 +27,7 @@ public class Field
     private void InitializePanel()
     {
         fieldPanel = new TableLayoutPanel();
-        fieldPanel.Size = new Size(600, 600);
+        fieldPanel.Size = new Size(700, 700);
         if (form.Controls[form.Controls.Count - 1] is TableLayoutPanel)
             form.Controls.RemoveAt(form.Controls.Count - 1);
         form.Controls.Add(fieldPanel);
@@ -35,8 +35,8 @@ public class Field
         fieldPanel.ColumnCount = Size;
         for (int i = 0; i < Size; i++)
         {
-            fieldPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            fieldPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            fieldPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20f));
+            fieldPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20f));
         }
         fieldPanel.Location = new Point(580, 120);
     }
