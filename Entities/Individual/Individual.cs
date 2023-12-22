@@ -4,7 +4,7 @@ namespace GeneticAlgorithm;
 
 public class Individual : IEnumerable<int>
 {
-    public int Fitness { get; set; } //заглушка
+    public double Fitness { get; set; }
     public event Action<Color>? Handler;
     public Population Population { get; }
     internal int[] Genes { get; set; }
@@ -13,14 +13,8 @@ public class Individual : IEnumerable<int>
     }
     public int this[int index]
     {
-        get
-        {
-            return Genes[index];
-        }
-        set
-        {
-            Genes[index] = value;
-        }
+        get => Genes[index];
+        set => Genes[index] = value;
     }
     public Individual(Population pop, params int[] genes)
     {
@@ -39,9 +33,13 @@ public class Individual : IEnumerable<int>
     {
         Handler?.Invoke(Color.Yellow);
     }
+    public void OnReset()
+    {
+        Handler?.Invoke(Color.Black);
+    }
     public override string ToString()
     {
-        return string.Join("", Genes);
+        return string.Join("", Genes) + $" - {Fitness}";
     }
 
     public IEnumerator<int> GetEnumerator()

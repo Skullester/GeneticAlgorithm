@@ -2,6 +2,7 @@
 
 public class Pair
 {
+    private Random random = new Random();
     public Individual First { get; }
     public Individual Second { get; }
     public Pair((Individual, Individual) pairTuple)
@@ -23,7 +24,7 @@ public class Pair
 
     enum Actions
     {
-        Die, Mutate, Survive
+        Die, Mutate, Survive, Reset, Fitness
     }
     private void Action(Actions action)
     {
@@ -33,11 +34,26 @@ public class Pair
                 ind.OnDying();
             else if (action is Actions.Mutate)
             {
-                ind[0] = ind[0] == 1 ? 0 : 1;
-                ind.OnMutation();
+                if (random.NextDouble() < 0.2)
+                {
+                    ind[0] = ind[0] == 1 ? 0 : 1;
+                    ind.OnMutation();
+                }
             }
+            else if (action is Actions.Reset)
+                ind.OnReset();
+            else if (action is Actions.Fitness)
+                ind.Fitness = Fitness.GetFitness(ind);
             else ind.OnSurvive();
         }
+    }
+    public void Fitnes()
+    {
+        Action(Actions.Fitness);
+    }
+    public void Reset()
+    {
+        Action(Actions.Reset);
     }
     public void Mutate()
     {

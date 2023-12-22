@@ -6,6 +6,10 @@ public abstract class Recombination
     protected Algorithm Algorithm { get; }
     protected Population Population => Algorithm.Population!;
     public abstract Pair Cross(Pair pair);
+    public Recombination(Algorithm algorithm)
+    {
+        Algorithm = algorithm;
+    }
     protected Pair GetGap(Pair pair, int firstGap, int secondGap)
     {
         pair.Kill();
@@ -25,8 +29,5 @@ public abstract class Recombination
         }
         return pair;
     }
-    public Recombination(Algorithm algorithm)
-    {
-        Algorithm = algorithm;
-    }
+
 }

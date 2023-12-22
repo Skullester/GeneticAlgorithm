@@ -19,7 +19,7 @@ public class Tournament : ParentChoosing
                 var index = rand.Next(0, Population.Count);
                 candidates.Add(Population[index]);
             }
-            var bestCandidate = candidates.MaxBy(x => x.Fitness);
+            var bestCandidate = candidates.MinBy(x => x.Fitness);
             map.Add(bestCandidate!);
         }
         foreach (var ind in map!)

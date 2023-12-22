@@ -6,9 +6,9 @@ public class Roulette : ParentChoosing
 {
     private class Segment
     {
-        public float Start { get; set; }
-        public float End { get; set; }
-        public Segment(float start, float end)
+        public double Start { get; set; }
+        public double End { get; set; }
+        public Segment(double start, double end)
         {
             Start = start;
             End = end;
@@ -25,12 +25,12 @@ public class Roulette : ParentChoosing
     public override IEnumerable<Pair> FindPartners()
     {
         var rand = Algorithm.Random;
-        float sum = Population!.Sum(x => x.Fitness);
+        var sum = Population!.Sum(x => x.Fitness);
         var dic = new Dictionary<Segment, Individual>();
-        float num = 0;
+        double num = 0;
         foreach (var ind in Population!)
         {
-            float ratio = ind.Fitness / sum;
+            var ratio = ind.Fitness / sum;
             Segment seg = new(num, num += ratio);
             dic[seg] = ind;
         }

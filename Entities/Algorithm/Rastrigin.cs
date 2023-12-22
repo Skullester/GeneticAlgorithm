@@ -3,9 +3,9 @@
 public class Rastrigin : IFunction
 {
     private readonly int A;
-    public Rastrigin(int a)
+    public Rastrigin(int A)
     {
-        this.A = a;
+        this.A = A;
     }
     public double GetValue(double x, double y)
     {

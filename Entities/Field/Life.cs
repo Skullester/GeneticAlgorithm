@@ -16,15 +16,15 @@ public class Life
     }
     public void StartLife()
     {
-        Random random = new Random();
-        while (true)
-        {
-            var row = random.Next(1, field.Size);
-            var column = random.Next(1, field.Size);
-            var cell = field[row, column];
-            var size = random.Next(10, 20);
-            cell.Shake(new Size(size, size));
-            Thread.Sleep(100);
-        }
+        //Random random = new();
+        //while (true)
+        //{
+        //    var row = random.Next(1, field.Size);
+        //    var column = random.Next(1, field.Size);
+        //    var cell = field[row, column];
+        //    var size = random.Next(10, 20);
+        //    cell.Shake(new Size(size, size));
+        //    Thread.Sleep(100);
+        //}
     }
 }

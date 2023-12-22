@@ -2,18 +2,22 @@
 
 namespace GeneticAlgorithm;
 
-public class Fitness
+public static class Fitness
 {
     private const double MIN = -5.12;
     private const double MAX = 5.12;
-    private readonly IFunction function;
-    private double fitnessValue = MAX;
-    private Chart? visualizer;
-    public Fitness(IFunction function)
+    private static readonly IFunction function;
+    public static double FitnessValue { get; private set; } = double.MaxValue;
+    //private Chart? visualizer;
+    //public Fitness(IFunction function)
+    //{
+    //    this.function = function;
+    //}
+    static Fitness()
     {
-        this.function = function;
+        function = new Rastrigin(10);
     }
-    public double GetFitness(Individual individual)
+    public static double GetFitness(Individual individual)
     {
         var genes = individual.Genes;
         var str = string.Join("", genes);
@@ -23,8 +27,8 @@ public class Fitness
         var x = BinaryDecoder.Normalize(MAX, MIN, xBinary);
         var y = BinaryDecoder.Normalize(MAX, MIN, yBinary);
         var fitness = function.GetValue(x, y);
-        if (fitness < fitnessValue) // ищем минимум
-            fitnessValue = fitness;
+        if (fitness < FitnessValue) // ищем минимум
+            FitnessValue = fitness;
         return fitness;
     }
     //private string CorrectFunction()

@@ -12,6 +12,6 @@ public static class BinaryDecoder
         var value = Decode(binaryStr);
         double range = max - min;
         double normalizedValue = value / (Math.Pow(2, binaryStr.Length) - 1); // Normalize binary value
-        return min + (normalizedValue * range);
+        return min + normalizedValue * range;
     }
 }

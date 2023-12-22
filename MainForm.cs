@@ -10,7 +10,7 @@ public partial class MainForm : Form
     public MainForm()
     {
         InitializeComponent();
-        geneticAlgorithm = new();
+        geneticAlgorithm = new(this);
         InitializeComboBox();
         //   FitnessFunction func = new();
     }
@@ -26,6 +26,12 @@ public partial class MainForm : Form
             if (item is ComboBox cb)
                 cb.SelectedIndex = 0;
         }
+    }
+    public void UpdateText(string? text = default)
+    {
+        if (text is null)
+            text = "Поколение: " + geneticAlgorithm.Generation;
+        //labelGeneration.Text = text;
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
