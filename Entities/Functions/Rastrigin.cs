@@ -3,17 +3,18 @@ using static Math;
 public class Rastrigin : IFunction
 {
     private readonly int A;
-    private readonly Argument argument;
-    public Rastrigin(int A, int N)
+    public Argument Argument { get; set; }
+    public int N { get; set; }
+    public Rastrigin(int A, int n)
     {
         this.A = A;
-        argument = new(N);
+        N = n;
     }
     public double GetValue()
     {
-        var n = argument.N;
+        var n = Argument.N;
         var sum = 0d;
-        foreach (var x in argument)
+        foreach (var x in Argument)
         {
             sum += Round(x * x - A * Cos(2 * PI * x));
         }

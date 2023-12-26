@@ -2,16 +2,19 @@
 
 namespace GeneticAlgorithm;
 
-public class Argument(int n) : IEnumerable<double>
+public class Argument : IEnumerable<double>
 {
-    private readonly double[] arguments = new double[n];
+    private readonly double[] arguments;
     public int N => arguments.Length;
     public double this[int index]
     {
         get => arguments[index];
         set => arguments[index] = value;
     }
-
+    public Argument(double[] args)
+    {
+        arguments = args;
+    }
     public IEnumerator<double> GetEnumerator()
     {
         return ((IEnumerable<double>)arguments).GetEnumerator();

@@ -6,7 +6,7 @@ public class Algorithm
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
     public int Generation { get; private set; }
-    public IFunction Function { get; set; }
+    public IFunction? Function { get; set; }
     public Random Random { get; } = new();
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
@@ -37,7 +37,7 @@ public class Algorithm
 
     public void Start()
     {
-        Fitness.SetFunction(Function);
+
         while (Fitness.FitnessValue > 0.01)
         {
             var parents = ParentChoosable!.FindPartners().ToList();

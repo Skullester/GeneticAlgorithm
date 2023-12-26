@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
@@ -125,7 +125,7 @@
             comboBoxCountOfGenes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCountOfGenes.Font = new Font("Segoe UI", 12F);
             comboBoxCountOfGenes.FormattingEnabled = true;
-            comboBoxCountOfGenes.Items.AddRange(new object[] { "5", "10", "20" });
+            comboBoxCountOfGenes.Items.AddRange(new object[] { "5", "10", "20", "50" });
             comboBoxCountOfGenes.Location = new Point(21, 129);
             comboBoxCountOfGenes.Name = "comboBoxCountOfGenes";
             comboBoxCountOfGenes.Size = new Size(210, 29);
@@ -239,19 +239,19 @@
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart.Legends.Add(legend1);
             chart.Location = new Point(1775, 29);
             chart.Name = "chart";
-            series2.BorderWidth = 5;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.MarkerBorderWidth = 5;
-            series2.Name = "Series1";
-            chart.Series.Add(series2);
+            series1.BorderWidth = 5;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.MarkerBorderWidth = 5;
+            series1.Name = "Series1";
+            chart.Series.Add(series1);
             chart.Size = new Size(17, 11);
             chart.TabIndex = 24;
             chart.Text = "chart";
@@ -263,9 +263,9 @@
             labelGeneration.Font = new Font("Segoe UI", 15F);
             labelGeneration.Location = new Point(582, 78);
             labelGeneration.Name = "labelGeneration";
-            labelGeneration.Size = new Size(234, 56);
+            labelGeneration.Size = new Size(229, 28);
             labelGeneration.TabIndex = 25;
-            labelGeneration.Text = "Поколение: 0 Оптимум: \r\arguments";
+            labelGeneration.Text = "Поколение: 0 Оптимум:";
             // 
             // comboBoxIndividuals
             // 
