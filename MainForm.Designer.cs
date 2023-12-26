@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
@@ -54,6 +54,8 @@
             comboBoxIndividuals = new ComboBox();
             label1 = new Label();
             checkBoxAccelerated = new CheckBox();
+            comboBoxDimensions = new ComboBox();
+            labelDimension = new Label();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             SuspendLayout();
             // 
@@ -237,19 +239,19 @@
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart.Legends.Add(legend2);
             chart.Location = new Point(1775, 29);
             chart.Name = "chart";
-            series1.BorderWidth = 5;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderWidth = 5;
-            series1.Name = "Series1";
-            chart.Series.Add(series1);
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderWidth = 5;
+            series2.Name = "Series1";
+            chart.Series.Add(series2);
             chart.Size = new Size(17, 11);
             chart.TabIndex = 24;
             chart.Text = "chart";
@@ -261,9 +263,9 @@
             labelGeneration.Font = new Font("Segoe UI", 15F);
             labelGeneration.Location = new Point(582, 78);
             labelGeneration.Name = "labelGeneration";
-            labelGeneration.Size = new Size(234, 28);
+            labelGeneration.Size = new Size(234, 56);
             labelGeneration.TabIndex = 25;
-            labelGeneration.Text = "Поколение: 0 Оптимум: \r\n";
+            labelGeneration.Text = "Поколение: 0 Оптимум: \r\arguments";
             // 
             // comboBoxIndividuals
             // 
@@ -297,11 +299,34 @@
             checkBoxAccelerated.Text = "Без задержек";
             checkBoxAccelerated.UseVisualStyleBackColor = true;
             // 
+            // comboBoxDimensions
+            // 
+            comboBoxDimensions.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxDimensions.Font = new Font("Segoe UI", 12F);
+            comboBoxDimensions.FormattingEnabled = true;
+            comboBoxDimensions.Items.AddRange(new object[] { "2", "5", "10", "20" });
+            comboBoxDimensions.Location = new Point(336, 200);
+            comboBoxDimensions.Name = "comboBoxDimensions";
+            comboBoxDimensions.Size = new Size(210, 29);
+            comboBoxDimensions.TabIndex = 29;
+            // 
+            // labelDimension
+            // 
+            labelDimension.AutoSize = true;
+            labelDimension.Font = new Font("Segoe UI", 17F);
+            labelDimension.Location = new Point(336, 166);
+            labelDimension.Name = "labelDimension";
+            labelDimension.Size = new Size(185, 31);
+            labelDimension.TabIndex = 30;
+            labelDimension.Text = "Размерность(N):";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(labelDimension);
+            Controls.Add(comboBoxDimensions);
             Controls.Add(checkBoxAccelerated);
             Controls.Add(label1);
             Controls.Add(comboBoxIndividuals);
@@ -356,5 +381,7 @@
         private ComboBox comboBoxIndividuals;
         private Label label1;
         public CheckBox checkBoxAccelerated;
+        private ComboBox comboBoxDimensions;
+        private Label labelDimension;
     }
 }

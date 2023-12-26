@@ -1,16 +1,17 @@
 ﻿namespace GeneticAlgorithm;
 public class Algorithm
 {
+    public const double MUTATION_PROBABILITY = 0.2;
+    public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
     public int Generation { get; private set; }
+    private readonly IFunction function;
     public Random Random { get; } = new();
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
-    public const double MutationProbability = 0.2;
     public Thread Process { get; }
-    public const int START_SPEED = 40;
     private int speed = START_SPEED;
     private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
     public int Speed
@@ -24,10 +25,11 @@ public class Algorithm
                 speed = value;
         }
     }
-    public Algorithm(MainForm mainForm)
+    public Algorithm(MainForm mainForm, IFunction function)
     {
         Process = new(Start);
         this.mainForm = mainForm;
+        this.function = function;
     }
     public void SetSpeed()
     {
@@ -36,6 +38,7 @@ public class Algorithm
 
     public void Start()
     {
+        Fitness.SetFunction(function);
         while (Fitness.FitnessValue > 0.01)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
@@ -56,9 +59,5 @@ public class Algorithm
             Generation++;
             mainForm.UpdateText();
         }
-        // MessageBox.Show(GeneticAlgorithm.Fitness.FitnessValue.ToString());
-        //var best = Population.Min(x => x.Fitness);
-        //mainForm.UpdateText(best.ToString());
-        //   mainForm.UpdateText(best.ToString());
     }
 }

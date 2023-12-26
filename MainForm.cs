@@ -6,13 +6,12 @@ public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
     private Field? field;
-    private readonly Timer timer = new();
+    //private readonly Timer timer = new();
     public MainForm()
     {
         InitializeComponent();
         geneticAlgorithm = new(this);
         Initialize();
-        //   FitnessFunction func = new();
     }
     private void Initialize()
     {
