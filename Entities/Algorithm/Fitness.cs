@@ -10,14 +10,12 @@ public static class Fitness
     public static double FitnessValue { get; private set; } = double.MaxValue;
     public static double GetFitness(Individual individual)
     {
-        var genes = individual.Genes;
-        var str = string.Join("", genes);
-        var length = str.Length / 2;
+        BinaryDecoder.DecodeIndividual(individual);
         string xBinary = str.Substring(0, length);
         string yBinary = str.Substring(length);
         var x = BinaryDecoder.Normalize(MAX, MIN, xBinary);
         var y = BinaryDecoder.Normalize(MAX, MIN, yBinary);
-        return 0;
+        var fitness = function.GetValue();
         // var fitness = function.GetValue(x, y);
         //if (fitness < FitnessValue) // ищем минимум
         //    FitnessValue = fitness;

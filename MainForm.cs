@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using Timer = System.Windows.Forms.Timer;
 
 namespace GeneticAlgorithm;
@@ -77,11 +78,16 @@ public partial class MainForm : Form
     }
     private void StartCrossover(object o, EventArgs e)
     {
+        SetAlgorithmFunction();
         bool isValidated = ValidateParameters();
         if (isValidated)
             geneticAlgorithm.Process.Start();
     }
-
+    private void SetAlgorithmFunction()
+    {
+        var N = int.Parse(comboBoxDimensions.Text);
+        geneticAlgorithm.Function = new Rastrigin(10, N);
+    }
     private void Restart(object sender, EventArgs e)
     {
         Application.Restart();

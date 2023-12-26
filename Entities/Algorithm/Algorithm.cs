@@ -6,7 +6,7 @@ public class Algorithm
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
     public int Generation { get; private set; }
-    private readonly IFunction function;
+    public IFunction Function { get; set; }
     public Random Random { get; } = new();
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
@@ -25,11 +25,10 @@ public class Algorithm
                 speed = value;
         }
     }
-    public Algorithm(MainForm mainForm, IFunction function)
+    public Algorithm(MainForm mainForm)
     {
         Process = new(Start);
         this.mainForm = mainForm;
-        this.function = function;
     }
     public void SetSpeed()
     {
@@ -38,7 +37,7 @@ public class Algorithm
 
     public void Start()
     {
-        Fitness.SetFunction(function);
+        Fitness.SetFunction(Function);
         while (Fitness.FitnessValue > 0.01)
         {
             var parents = ParentChoosable!.FindPartners().ToList();

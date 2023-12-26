@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace GeneticAlgorithm;
+﻿namespace GeneticAlgorithm;
 public static class BinaryDecoder
 {
     private static double Decode(string binariesStr)
@@ -13,5 +11,11 @@ public static class BinaryDecoder
         double range = max - min;
         double normalizedValue = value / (Math.Pow(2, binaryStr.Length) - 1);
         return min + normalizedValue * range;
+    }
+    public static double[] DecodeIndividual(Individual individual)
+    {
+        var genes = individual.Genes;
+        var genesStr = string.Join("", genes);
+        var length = genesStr.Length / 2;
     }
 }
