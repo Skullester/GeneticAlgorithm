@@ -8,6 +8,7 @@ public class Algorithm
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
+    public const double MutationProbability = 0.2;
     public Thread Process { get; }
     public const int START_SPEED = 40;
     private int speed = START_SPEED;

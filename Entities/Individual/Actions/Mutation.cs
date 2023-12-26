@@ -4,12 +4,18 @@ namespace GeneticAlgorithm;
 
 public class Mutation : IAction
 {
+    private const double probability = Algorithm.MutationProbability;
+    private readonly Random random;
+    public Mutation()
+    {
+        random = new Random();
+    }
     public void Act(Individual ind)
     {
-        Random rand = new Random();
-        if (rand.NextDouble() < 0.2)
+        if (random.NextDouble() < probability)
         {
-            ind[0] = ind[0] == 1 ? 0 : 1;
+            var index = random.Next(0, ind.Population.GenesCount);
+            ind[index] = ind[index] == 1 ? 0 : 1;
             ind.OnMutation();
         }
     }
