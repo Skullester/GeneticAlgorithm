@@ -3,7 +3,7 @@ using static Math;
 public class Rastrigin : IFunction
 {
     private readonly int A;
-    public Argument Argument { get; set; }
+    public Argument? Argument { get; set; }
     public int N { get; set; }
     public Rastrigin(int A, int n)
     {

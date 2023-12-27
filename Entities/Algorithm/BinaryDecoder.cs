@@ -19,7 +19,6 @@ public static class BinaryDecoder
         var genesStr = string.Join("", genes);
         var length = genesStr.Length / N;
         var startIndex = 0;
-        //var endIndex = step;
         for (int i = 0; i < arguments.Length; i++)
         {
             var binaryStr = genesStr.Substring(startIndex, length);
