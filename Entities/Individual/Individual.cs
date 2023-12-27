@@ -16,6 +16,11 @@ public class Individual : IEnumerable<int>
         get => Genes[index];
         set => Genes[index] = value;
     }
+    public double GetFitness()
+    {
+        Fitness = GeneticAlgorithm.Fitness.GetFitness(this);
+        return Fitness;
+    }
     public Individual(Population pop, params int[] genes)
     {
         Population = pop;

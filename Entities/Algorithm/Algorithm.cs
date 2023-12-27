@@ -2,6 +2,7 @@
 public class Algorithm
 {
     public const double MUTATION_PROBABILITY = 0.2;
+    private const double alpha = 1E-6;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
@@ -37,9 +38,10 @@ public class Algorithm
 
     public void Start()
     {
-
-        while (Fitness.FitnessValue > 0.01)
+        // mainForm.UpdateText();
+        while (Fitness.FitnessValue > alpha)
         {
+            var sum = 0d;
             var parents = ParentChoosable!.FindPartners().ToList();
             foreach (var parent in parents)
             {
@@ -49,14 +51,20 @@ public class Algorithm
                 Thread.Sleep(Speed);
                 pair.Survive();
                 pair.Select();
+                sum += pair.TEST();
             }
+            var avg = sum / Population.Count;
+            //MessageBox.Show((sum / Population.Count).ToString());
             foreach (var parent in parents)
             {
                 parent.Reset();
             }
+            //  var newList = Population.Where(x => x.Fitness <= avg).ToList();
+            //Population = new(newList, Population.GenesCount, newList.Count);
             Thread.Sleep(Speed);
             Generation++;
             mainForm.UpdateText();
         }
+        Process.Interrupt();
     }
 }

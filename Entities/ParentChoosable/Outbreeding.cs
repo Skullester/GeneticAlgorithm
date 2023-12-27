@@ -8,6 +8,6 @@ public class Outbreeding : ParentChoosing
     public override IEnumerable<Pair> FindPartners() => GetParents(x => x.MaxBy(x => x.count).individ);
     public override string ToString()
     {
-        return "Оутбридинг";
+        return "Аутбридинг";
     }
 }

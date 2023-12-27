@@ -31,6 +31,15 @@ public class Pair
         foreach (var ind in this)
             action.Act(ind);
     }
+    public double TEST()
+    {
+        var sum = 0d;
+        foreach (var ind in this)
+        {
+            sum += ind.Fitness;
+        }
+        return sum;
+    }
     public void Kill()
     {
         Action(Actions[0]);

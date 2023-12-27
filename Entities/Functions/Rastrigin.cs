@@ -16,7 +16,7 @@ public class Rastrigin : IFunction
         var sum = 0d;
         foreach (var x in Argument)
         {
-            sum += Round(x * x - A * Cos(2 * PI * x));
+            sum += x * x - A * Cos(2 * PI * x);
         }
         var result = A * n + sum;
         return result;

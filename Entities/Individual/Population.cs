@@ -17,6 +17,20 @@ public class Population : IEnumerable<Individual>
     {
         get => individuals[index];
     }
+    public Population(IEnumerable<Individual> newPop, int genesCount, int indCount)
+    {
+        individuals = newPop as List<Individual>;
+        GenesCount = genesCount;
+        Count = indCount;
+    }
+    public void AddIndividual(Individual ind)
+    {
+        individuals.Add(ind);
+    }
+    public void KillIndividual(Individual ind)
+    {
+        individuals.Remove(ind);
+    }
     public static Population GetRandomPopulation(int genesCount, int indCount)
     {
         Random rand = new();

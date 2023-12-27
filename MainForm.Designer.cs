@@ -125,7 +125,7 @@
             comboBoxCountOfGenes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCountOfGenes.Font = new Font("Segoe UI", 12F);
             comboBoxCountOfGenes.FormattingEnabled = true;
-            comboBoxCountOfGenes.Items.AddRange(new object[] { "5", "10", "20", "50" });
+            comboBoxCountOfGenes.Items.AddRange(new object[] { "20", "50", "100", "200", "500" });
             comboBoxCountOfGenes.Location = new Point(21, 129);
             comboBoxCountOfGenes.Name = "comboBoxCountOfGenes";
             comboBoxCountOfGenes.Size = new Size(210, 29);

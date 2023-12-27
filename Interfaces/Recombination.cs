@@ -12,7 +12,11 @@ public abstract class Recombination
     }
     protected Pair GetGap(Pair pair, int firstGap, int secondGap)
     {
-        pair.Kill();
+        Individual first = pair[0];
+        Individual second = pair[1];
+        List<int[]> oldGenes = new() { first.Genes, second.Genes };
+        double[] oldFitnesses = { first.Fitness, second.Fitness };
+
         List<int[]> tails = new();
         for (int i = pairCount - 1; i > -1; i--)
         {
@@ -26,6 +30,13 @@ public abstract class Recombination
             int[] tail = pair[i].Genes[(secondGap + 1)..Population.GenesCount];
             var newArr = head.Concat(gap).Concat(tail).ToArray();
             pair[i].Genes = newArr;
+        }
+        for (int i = 0; i < pairCount; i++)
+        {
+            pair[i].GetFitness();
+            if (pair[i].Fitness > oldFitnesses[i])
+                pair[i].Genes = oldGenes[i];
+            else pair[i].OnDying();
         }
         return pair;
     }

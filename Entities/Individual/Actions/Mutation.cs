@@ -14,9 +14,14 @@ public class Mutation : IAction
     {
         if (random.NextDouble() < probability)
         {
+            var fitnessBefore = ind.Fitness;
             var index = random.Next(0, ind.Population.GenesCount);
-            ind[index] = ind[index] == 1 ? 0 : 1;
-            ind.OnMutation();
+            var isBitOne = ind[index] == 1;
+            ind[index] = Convert.ToInt32(!isBitOne);
+            var newFitness = ind.GetFitness();
+            if (fitnessBefore < newFitness)
+                ind[index] = Convert.ToInt32(isBitOne);
+            else ind.OnMutation();
         }
     }
 }
