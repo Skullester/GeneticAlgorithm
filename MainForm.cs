@@ -1,14 +1,9 @@
-using System.Reflection.Metadata.Ecma335;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Timer = System.Windows.Forms.Timer;
-
 namespace GeneticAlgorithm;
 
 public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
     private Field? field;
-    //private readonly Timer timer = new();
     public MainForm()
     {
         InitializeComponent();
@@ -36,7 +31,7 @@ public partial class MainForm : Form
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         // field?.Life.Abort();
-        geneticAlgorithm.Process.Interrupt();
+        // geneticAlgorithm.Process.Interrupt();
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {
@@ -89,7 +84,7 @@ public partial class MainForm : Form
 
         bool isValidated = ValidateParameters();
         if (isValidated)
-            geneticAlgorithm.Process.Start();
+            geneticAlgorithm./*Process.*/Start();
     }
 
     private void Restart(object sender, EventArgs e)

@@ -56,6 +56,7 @@
             checkBoxAccelerated = new CheckBox();
             comboBoxDimensions = new ComboBox();
             labelDimension = new Label();
+            ListBoxArguments = new ListBox();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             SuspendLayout();
             // 
@@ -320,11 +321,21 @@
             labelDimension.TabIndex = 30;
             labelDimension.Text = "Размерность(N):";
             // 
+            // ListBoxArguments
+            // 
+            ListBoxArguments.FormattingEnabled = true;
+            ListBoxArguments.ItemHeight = 15;
+            ListBoxArguments.Location = new Point(589, 129);
+            ListBoxArguments.Name = "ListBoxArguments";
+            ListBoxArguments.Size = new Size(222, 184);
+            ListBoxArguments.TabIndex = 31;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(ListBoxArguments);
             Controls.Add(labelDimension);
             Controls.Add(comboBoxDimensions);
             Controls.Add(checkBoxAccelerated);
@@ -383,5 +394,6 @@
         public CheckBox checkBoxAccelerated;
         private ComboBox comboBoxDimensions;
         private Label labelDimension;
+        public ListBox ListBoxArguments;
     }
 }
