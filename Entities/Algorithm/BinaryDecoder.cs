@@ -3,7 +3,7 @@ public static class BinaryDecoder
 {
     private static double Decode(string binariesStr)
     {
-        return Convert.ToDouble(binariesStr);
+        return Convert.ToDouble(binariesStr, 2);
     }
     private static double Normalize(string binaryStr)
     {
