@@ -4,6 +4,7 @@ namespace GeneticAlgorithm;
 public class Algorithm
 {
     public static double MUTATION_PROBABILITY = 0.2;
+    public int MaxGenerations { get; set; }
     private const double alpha = 1E-3;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
@@ -36,16 +37,16 @@ public class Algorithm
         this.mainForm = mainForm;
     }
 
-    //private void Reset()
-    //{
-    //    Function!.Best.Reset();
-    //    Generation = 0;
-    //    mainForm.UpdateText(string.Empty, 0);
-    //    chart.Reset();
-    //}
+    private void Reset()
+    {
+        Function!.Best.Reset();
+        Generation = 0;
+        mainForm.UpdateText(string.Empty, 0);
+        chart.Reset();
+    }
     public void Start()
     {
-        chart = new(mainForm.Chart1);
+        chart = new(mainForm.Chart1); Reset();
         var arg = 0;
         //var tmp = 0d;
         Stopwatch sw = Stopwatch.StartNew();
@@ -65,7 +66,7 @@ public class Algorithm
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
-            var y = list.Average(x => x.Fitness);
+            var y = list.Min(x => x.Fitness);
             //var y = min;
             //if (Generation > 0)
             //{
@@ -77,7 +78,7 @@ public class Algorithm
             //tmp = min;
             // Thread.Sleep(Speed);
             Generation++;
-            if (Generation > 300)
+            if (Generation == MaxGenerations)
             {
                 var gen = Generation;
                 var value = Function!.Best.Value;

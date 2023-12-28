@@ -64,6 +64,8 @@
             label3 = new Label();
             textBoxMutation = new TextBox();
             labelAlgorithmTime = new Label();
+            comboBoxGenerations = new ComboBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Chart1).BeginInit();
             SuspendLayout();
@@ -143,9 +145,9 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 15F);
-            button1.Location = new Point(21, 349);
+            button1.Location = new Point(12, 349);
             button1.Name = "button1";
-            button1.Size = new Size(353, 88);
+            button1.Size = new Size(299, 97);
             button1.TabIndex = 10;
             button1.Text = "Начать скрещивание";
             button1.UseVisualStyleBackColor = true;
@@ -386,11 +388,34 @@
             labelAlgorithmTime.TabIndex = 35;
             labelAlgorithmTime.Text = "Потраченное время:";
             // 
+            // comboBoxGenerations
+            // 
+            comboBoxGenerations.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGenerations.Font = new Font("Segoe UI", 12F);
+            comboBoxGenerations.FormattingEnabled = true;
+            comboBoxGenerations.Items.AddRange(new object[] { "250", "300", "400", "500", "1000" });
+            comboBoxGenerations.Location = new Point(338, 363);
+            comboBoxGenerations.Name = "comboBoxGenerations";
+            comboBoxGenerations.Size = new Size(210, 29);
+            comboBoxGenerations.TabIndex = 36;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 17F);
+            label4.Location = new Point(336, 329);
+            label4.Name = "label4";
+            label4.Size = new Size(193, 31);
+            label4.TabIndex = 37;
+            label4.Text = "Макс. поколений";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(label4);
+            Controls.Add(comboBoxGenerations);
             Controls.Add(labelAlgorithmTime);
             Controls.Add(textBoxMutation);
             Controls.Add(label3);
@@ -461,5 +486,7 @@
         private Label label3;
         private TextBox textBoxMutation;
         private Label labelAlgorithmTime;
+        private ComboBox comboBoxGenerations;
+        private Label label4;
     }
 }
