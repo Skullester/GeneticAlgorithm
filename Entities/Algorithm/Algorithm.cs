@@ -2,7 +2,7 @@
 public class Algorithm
 {
     public const double MUTATION_PROBABILITY = 0.2;
-    private const double alpha = 1E-4;
+    private const double alpha = 1E-5;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
@@ -35,9 +35,10 @@ public class Algorithm
 
     public void Start()
     {
-        chart = new(mainForm.chart1);
+        chart = new(mainForm.Chart1);
         Generation = 0;
         var arg = 0;
+        var tmp = 0d;
         while (Function!.Best.Value > alpha)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
@@ -54,8 +55,16 @@ public class Algorithm
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
-            var y = list.Min(x => x.Fitness);
+            var min = list.Min(x => x.Fitness);
+            var y = min;
+            if (Generation > 0)
+            {
+                y = min - tmp;
+                //var y = list.Min(x => x.Fitness);
+
+            }
             chart.Draw(arg++, y);
+            tmp = min;
             // Thread.Sleep(Speed);
             Generation++;
             mainForm.UpdateText(Function.Best.Value);
