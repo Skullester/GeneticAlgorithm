@@ -2,7 +2,7 @@
 public class Algorithm
 {
     public const double MUTATION_PROBABILITY = 0.2;
-    private const double alpha = 1E-2;
+    private const double alpha = 1E-4;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
@@ -34,12 +34,21 @@ public class Algorithm
 
     public void Start()
     {
+        Generation = 0;
         while (Function!.Best.Value > alpha)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
+            //MessageBox.Show(parents.Average(x => x.First.Fitness).ToString());
+            var sum = 0d;
+            List<Individual> list = new();
             foreach (var parent in parents)
             {
                 var pair = Recombination!.Cross(parent);
+                foreach (var child in pair)
+                {
+                    list.Add(child);
+                }
+                //sum +=
                 //Thread.Sleep(Speed);
                 pair.Mutate();
                 // Thread.Sleep(Speed);
@@ -47,7 +56,7 @@ public class Algorithm
             }
             // Thread.Sleep(Speed);
             Generation++;
-            mainForm.UpdateText();
+            mainForm.UpdateText(Function.Best.Value);
         }
         // Process.Interrupt();
         foreach (var x in Function.Best.Argument!)

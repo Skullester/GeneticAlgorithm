@@ -14,9 +14,8 @@ public abstract class Recombination
     {
         Individual first = pair[0];
         Individual second = pair[1];
-        List<byte[]> oldGenes = new() { first.Genes, second.Genes };
-        double[] oldFitnesses = { first.Fitness, second.Fitness };
-
+        List<byte[]> oldGenes = [first.Genes, second.Genes];
+        //double[] oldFitnesses = { first.Fitness, second.Fitness };
         List<byte[]> tails = new();
         for (int i = pairCount - 1; i > -1; i--)
         {
@@ -33,8 +32,9 @@ public abstract class Recombination
         }
         for (int i = 0; i < pairCount; i++)
         {
-            pair[i].GetFitness();
-            if (pair[i].Fitness > oldFitnesses[i])
+            var oldFitness = pair[i].Fitness;
+            var newFitness = pair[i].GetFitness();
+            if (newFitness > oldFitness)
                 pair[i].Genes = oldGenes[i];
             else pair[i].OnDying();
         }

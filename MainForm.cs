@@ -24,9 +24,9 @@ public partial class MainForm : Form
                 cb.SelectedIndex = 0;
         }
     }
-    public void UpdateText()
+    public void UpdateText<T>(T value)
     {
-        labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + Fitness.FitnessValue;
+        labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + value;
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
