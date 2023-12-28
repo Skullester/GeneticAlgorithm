@@ -7,7 +7,12 @@ public class Chart
     private readonly WinChart visualizer;
     public Chart(WinChart chart)
     {
+
         visualizer = chart;
+    }
+    public void Reset()
+    {
+        visualizer.Series[0].Points.Clear();
     }
     public void Draw(double x, double y)
     {

@@ -7,6 +7,11 @@ internal class Rastrigin : IFunction
     {
         internal double Value { get; set; } = double.MaxValue;
         internal Argument? Argument;
+        internal void Reset()
+        {
+            Value = double.MaxValue;
+            Argument = default;
+        }
     }
     private readonly int A;
     public int N { get; set; }

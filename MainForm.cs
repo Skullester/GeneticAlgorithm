@@ -13,6 +13,7 @@ public partial class MainForm : Form
     private void Initialize()
     {
         checkBoxAccelerated.CheckedChanged += OnCheckBoxAccelerated;
+        textBoxMutation.TextChanged += OnTextBoxChanged;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
         comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
@@ -24,14 +25,22 @@ public partial class MainForm : Form
                 cb.SelectedIndex = 0;
         }
     }
-    public void UpdateText<T>(T value)
+    public void UpdateText<T>(T value, double milliseconds)
     {
+        labelAlgorithmTime.Text = "Потраченное время:" + milliseconds.ToString() + " мс";
         labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + value;
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         // field?.Life.Abort();
         // geneticAlgorithm.Process.Interrupt();
+    }
+    private void OnTextBoxChanged(object? o, EventArgs e)
+    {
+        var p = double.Parse(textBoxMutation.Text);
+        if (p <= 0 || p > 1)
+            throw new ArgumentException("Неверный ввод!");
+        Algorithm.MUTATION_PROBABILITY = p;
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {
@@ -81,13 +90,14 @@ public partial class MainForm : Form
     }
     private void StartCrossover(object o, EventArgs e)
     {
-
+        if (geneticAlgorithm.IsSucceed)
+            throw new ArgumentException("Перезапустите программу!");
         bool isValidated = ValidateParameters();
         if (isValidated)
             geneticAlgorithm./*Process.*/Start();
     }
 
-    private void Restart(object sender, EventArgs e)
+    public void Restart(object sender, EventArgs e)
     {
         Application.Restart();
     }

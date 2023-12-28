@@ -1,8 +1,10 @@
-﻿namespace GeneticAlgorithm;
+﻿using System.Diagnostics;
+
+namespace GeneticAlgorithm;
 public class Algorithm
 {
-    public const double MUTATION_PROBABILITY = 0.2;
-    private const double alpha = 1E-5;
+    public static double MUTATION_PROBABILITY = 0.2;
+    private const double alpha = 1E-3;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
@@ -12,10 +14,11 @@ public class Algorithm
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
-    private Chart chart;
+    public Chart? chart { get; private set; }
     // public Thread Process { get; }
     private int speed = START_SPEED;
     private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
+    public bool IsSucceed { get; private set; }
     public int Speed
     {
         get => speed;
@@ -33,12 +36,19 @@ public class Algorithm
         this.mainForm = mainForm;
     }
 
+    //private void Reset()
+    //{
+    //    Function!.Best.Reset();
+    //    Generation = 0;
+    //    mainForm.UpdateText(string.Empty, 0);
+    //    chart.Reset();
+    //}
     public void Start()
     {
         chart = new(mainForm.Chart1);
-        Generation = 0;
         var arg = 0;
-        var tmp = 0d;
+        //var tmp = 0d;
+        Stopwatch sw = Stopwatch.StartNew();
         while (Function!.Best.Value > alpha)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
@@ -55,25 +65,36 @@ public class Algorithm
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
-            var min = list.Min(x => x.Fitness);
-            var y = min;
-            if (Generation > 0)
-            {
-                y = min - tmp;
-                //var y = list.Min(x => x.Fitness);
+            var y = list.Average(x => x.Fitness);
+            //var y = min;
+            //if (Generation > 0)
+            //{
+            //    y = min - tmp;
+            //    //var y = list.Min(x => x.Fitness);
 
-            }
+            //}
             chart.Draw(arg++, y);
-            tmp = min;
+            //tmp = min;
             // Thread.Sleep(Speed);
             Generation++;
-            mainForm.UpdateText(Function.Best.Value);
+            if (Generation > 300)
+            {
+                var gen = Generation;
+                var value = Function!.Best.Value;
+                MessageBox.Show($"Решение не найдено! \nGen: {gen} \nFitness: {value}\nИзмените настройки алгоритма!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+                return;
+            }
         }
+        sw.Stop();
+        var milliseconds = sw.ElapsedMilliseconds;
+        mainForm.UpdateText(Function.Best.Value, milliseconds);
         // Process.Interrupt();
         foreach (var x in Function.Best.Argument!)
         {
             mainForm.ListBoxArguments.Items.Add(x);
         }
+        IsSucceed = true;
     }
     public void SetSpeed()
     {

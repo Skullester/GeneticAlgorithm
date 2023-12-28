@@ -61,6 +61,9 @@
             labelDimension = new Label();
             ListBoxArguments = new ListBox();
             Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            label3 = new Label();
+            textBoxMutation = new TextBox();
+            labelAlgorithmTime = new Label();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Chart1).BeginInit();
             SuspendLayout();
@@ -352,13 +355,45 @@
             Chart1.Series.Add(series2);
             Chart1.Size = new Size(773, 529);
             Chart1.TabIndex = 32;
-            Chart1.Text = "Chart";
+            Chart1.Text = "chart";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 17F);
+            label3.Location = new Point(336, 246);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 31);
+            label3.TabIndex = 33;
+            label3.Text = "Мутация:";
+            // 
+            // textBoxMutation
+            // 
+            textBoxMutation.Font = new Font("Segoe UI", 12F);
+            textBoxMutation.Location = new Point(336, 280);
+            textBoxMutation.Name = "textBoxMutation";
+            textBoxMutation.Size = new Size(100, 29);
+            textBoxMutation.TabIndex = 34;
+            textBoxMutation.Text = "0,2";
+            // 
+            // labelAlgorithmTime
+            // 
+            labelAlgorithmTime.AutoSize = true;
+            labelAlgorithmTime.Font = new Font("Segoe UI", 15F);
+            labelAlgorithmTime.Location = new Point(592, 566);
+            labelAlgorithmTime.Name = "labelAlgorithmTime";
+            labelAlgorithmTime.Size = new Size(201, 28);
+            labelAlgorithmTime.TabIndex = 35;
+            labelAlgorithmTime.Text = "Потраченное время:";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(labelAlgorithmTime);
+            Controls.Add(textBoxMutation);
+            Controls.Add(label3);
             Controls.Add(Chart1);
             Controls.Add(ListBoxArguments);
             Controls.Add(labelDimension);
@@ -423,5 +458,8 @@
         public ListBox ListBoxArguments;
         public System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         public System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
+        private Label label3;
+        private TextBox textBoxMutation;
+        private Label labelAlgorithmTime;
     }
 }
