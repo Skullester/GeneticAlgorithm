@@ -17,12 +17,6 @@ public class Population : IEnumerable<Individual>
     {
         get => individuals[index];
     }
-    public Population(IEnumerable<Individual> newPop, int genesCount, int indCount)
-    {
-        individuals = newPop as List<Individual>;
-        GenesCount = genesCount;
-        Count = indCount;
-    }
     public void AddIndividual(Individual ind)
     {
         individuals.Add(ind);
@@ -40,7 +34,7 @@ public class Population : IEnumerable<Individual>
             Individual individual = new(pop);
             for (int j = 0; j < genesCount; j++)
             {
-                individual[j] = rand.Next(0, 1 + 1);
+                individual[j] = (byte)rand.Next(0, 1 + 1);
             }
             individual.Fitness = Fitness.GetFitness(individual);
             pop.individuals.Add(individual);

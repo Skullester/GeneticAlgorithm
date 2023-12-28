@@ -12,7 +12,7 @@ public class Rastrigin : IFunction
     }
     public double GetValue()
     {
-        var n = Argument.N;
+        var n = Argument!.N;
         var sum = 0d;
         foreach (var x in Argument)
         {

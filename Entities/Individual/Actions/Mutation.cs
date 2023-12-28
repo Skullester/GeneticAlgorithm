@@ -17,10 +17,10 @@ public class Mutation : IAction
             var fitnessBefore = ind.Fitness;
             var index = random.Next(0, ind.Population.GenesCount);
             var isBitOne = ind[index] == 1;
-            ind[index] = Convert.ToInt32(!isBitOne);
+            ind[index] = Convert.ToByte(!isBitOne);
             var newFitness = ind.GetFitness();
             if (fitnessBefore < newFitness)
-                ind[index] = Convert.ToInt32(isBitOne);
+                ind[index] = Convert.ToByte(isBitOne);
             else ind.OnMutation();
         }
     }

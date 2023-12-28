@@ -14,10 +14,10 @@ public abstract class Recombination
     {
         Individual first = pair[0];
         Individual second = pair[1];
-        List<int[]> oldGenes = new() { first.Genes, second.Genes };
+        List<byte[]> oldGenes = new() { first.Genes, second.Genes };
         double[] oldFitnesses = { first.Fitness, second.Fitness };
 
-        List<int[]> tails = new();
+        List<byte[]> tails = new();
         for (int i = pairCount - 1; i > -1; i--)
         {
             var tail = pair[i].Genes[(firstGap + 1)..(secondGap + 1)];
@@ -27,7 +27,7 @@ public abstract class Recombination
         {
             var head = pair[i].Genes[0..(firstGap + 1)];
             var gap = tails[i];
-            int[] tail = pair[i].Genes[(secondGap + 1)..Population.GenesCount];
+            byte[] tail = pair[i].Genes[(secondGap + 1)..Population.GenesCount];
             var newArr = head.Concat(gap).Concat(tail).ToArray();
             pair[i].Genes = newArr;
         }

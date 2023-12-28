@@ -41,7 +41,7 @@ public class Algorithm
         // mainForm.UpdateText();
         while (Fitness.FitnessValue > alpha)
         {
-            var sum = 0d;
+            //var sum = 0d;
             var parents = ParentChoosable!.FindPartners().ToList();
             foreach (var parent in parents)
             {
@@ -50,17 +50,13 @@ public class Algorithm
                 pair.Mutate();
                 Thread.Sleep(Speed);
                 pair.Survive();
-                pair.Select();
-                sum += pair.TEST();
+                //pair.Select();
+                // sum += pair.TEST();
             }
-            var avg = sum / Population.Count;
-            //MessageBox.Show((sum / Population.Count).ToString());
-            foreach (var parent in parents)
-            {
-                parent.Reset();
-            }
-            //  var newList = Population.Where(x => x.Fitness <= avg).ToList();
-            //Population = new(newList, Population.GenesCount, newList.Count);
+            //foreach (var parent in parents)
+            //{
+            //    parent.Reset();
+            //}
             Thread.Sleep(Speed);
             Generation++;
             mainForm.UpdateText();

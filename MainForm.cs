@@ -35,7 +35,7 @@ public partial class MainForm : Form
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
-        field?.Life.Abort();
+        // field?.Life.Abort();
         geneticAlgorithm.Process.Interrupt();
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
@@ -64,11 +64,11 @@ public partial class MainForm : Form
     private void GeneratePopulation(object sender, EventArgs e)
     {
         SetAlgorithmFunction();
-        Fitness.SetFunction(geneticAlgorithm.Function);
+        Fitness.SetFunction(geneticAlgorithm.Function!);
         var genesCount = int.Parse(comboBoxCountOfGenes.Text);
         var indCount = int.Parse(comboBoxIndividuals.Text);
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount, indCount);
-        CreateField();
+        // CreateField();
         MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 

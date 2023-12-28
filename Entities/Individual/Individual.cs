@@ -2,16 +2,16 @@
 
 namespace GeneticAlgorithm;
 
-public class Individual : IEnumerable<int>
+public class Individual : IEnumerable<byte>
 {
     public double Fitness { get; set; }
     public event Action<Color>? Handler;
     public Population Population { get; }
-    internal int[] Genes { get; set; }
-    public Individual(Population pop) : this(pop, new int[pop.GenesCount])
+    internal byte[] Genes { get; set; }
+    public Individual(Population pop) : this(pop, new byte[pop.GenesCount])
     {
     }
-    public int this[int index]
+    public byte this[int index]
     {
         get => Genes[index];
         set => Genes[index] = value;
@@ -21,7 +21,7 @@ public class Individual : IEnumerable<int>
         Fitness = GeneticAlgorithm.Fitness.GetFitness(this);
         return Fitness;
     }
-    public Individual(Population pop, params int[] genes)
+    public Individual(Population pop, params byte[] genes)
     {
         Population = pop;
         Genes = genes;
@@ -47,9 +47,9 @@ public class Individual : IEnumerable<int>
         return string.Join("", Genes) + $" - {Fitness}";
     }
 
-    public IEnumerator<int> GetEnumerator()
+    public IEnumerator<byte> GetEnumerator()
     {
-        return ((IEnumerable<int>)Genes).GetEnumerator();
+        return ((IEnumerable<byte>)Genes).GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
