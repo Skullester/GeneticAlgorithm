@@ -31,6 +31,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
@@ -57,7 +60,9 @@
             comboBoxDimensions = new ComboBox();
             labelDimension = new Label();
             ListBoxArguments = new ListBox();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -230,7 +235,7 @@
             // buttonRestart
             // 
             buttonRestart.Font = new Font("Segoe UI", 15F);
-            buttonRestart.Location = new Point(12, 464);
+            buttonRestart.Location = new Point(15, 735);
             buttonRestart.Name = "buttonRestart";
             buttonRestart.Size = new Size(170, 54);
             buttonRestart.TabIndex = 22;
@@ -250,7 +255,7 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.MarkerBorderWidth = 5;
+            series1.MarkerBorderWidth = 10;
             series1.Name = "Series1";
             chart.Series.Add(series1);
             chart.Size = new Size(17, 11);
@@ -262,7 +267,7 @@
             // 
             labelGeneration.AutoSize = true;
             labelGeneration.Font = new Font("Segoe UI", 15F);
-            labelGeneration.Location = new Point(582, 78);
+            labelGeneration.Location = new Point(12, 463);
             labelGeneration.Name = "labelGeneration";
             labelGeneration.Size = new Size(229, 28);
             labelGeneration.TabIndex = 25;
@@ -325,16 +330,35 @@
             // 
             ListBoxArguments.FormattingEnabled = true;
             ListBoxArguments.ItemHeight = 15;
-            ListBoxArguments.Location = new Point(589, 129);
+            ListBoxArguments.Location = new Point(12, 510);
             ListBoxArguments.Name = "ListBoxArguments";
             ListBoxArguments.Size = new Size(222, 184);
             ListBoxArguments.TabIndex = 31;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
+            chart1.Location = new Point(583, 9);
+            chart1.Name = "chart1";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
+            chart1.Size = new Size(1094, 780);
+            chart1.TabIndex = 32;
+            chart1.Text = "chart1";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(chart1);
             Controls.Add(ListBoxArguments);
             Controls.Add(labelDimension);
             Controls.Add(comboBoxDimensions);
@@ -364,6 +388,7 @@
             Name = "MainForm";
             Text = "Генетический Алгоритм";
             ((System.ComponentModel.ISupportInitialize)chart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -395,5 +420,7 @@
         private ComboBox comboBoxDimensions;
         private Label labelDimension;
         public ListBox ListBoxArguments;
+        public System.Windows.Forms.DataVisualization.Charting.Chart Chart;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

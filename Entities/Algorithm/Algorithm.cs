@@ -12,6 +12,7 @@ public class Algorithm
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
+    private Chart chart;
     // public Thread Process { get; }
     private int speed = START_SPEED;
     private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
@@ -34,12 +35,12 @@ public class Algorithm
 
     public void Start()
     {
+        chart = new(mainForm.chart1);
         Generation = 0;
+        var arg = 0;
         while (Function!.Best.Value > alpha)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
-            //MessageBox.Show(parents.Average(x => x.First.Fitness).ToString());
-            var sum = 0d;
             List<Individual> list = new();
             foreach (var parent in parents)
             {
@@ -48,12 +49,13 @@ public class Algorithm
                 {
                     list.Add(child);
                 }
-                //sum +=
                 //Thread.Sleep(Speed);
                 pair.Mutate();
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
+            var y = list.Min(x => x.Fitness);
+            chart.Draw(arg++, y);
             // Thread.Sleep(Speed);
             Generation++;
             mainForm.UpdateText(Function.Best.Value);

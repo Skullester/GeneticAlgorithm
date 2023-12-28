@@ -33,7 +33,7 @@ public abstract class Recombination
         for (int i = 0; i < pairCount; i++)
         {
             var oldFitness = pair[i].Fitness;
-            var newFitness = pair[i].GetFitness();
+            var newFitness = pair[i].CalculateFitness();
             if (newFitness > oldFitness)
                 pair[i].Genes = oldGenes[i];
             else pair[i].OnDying();

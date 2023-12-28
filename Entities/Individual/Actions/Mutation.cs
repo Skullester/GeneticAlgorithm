@@ -18,7 +18,7 @@ public class Mutation : IAction
             var index = random.Next(0, ind.Population.GenesCount);
             var isBitOne = ind[index] == 1;
             ind[index] = Convert.ToByte(!isBitOne);
-            var newFitness = ind.GetFitness();
+            var newFitness = ind.CalculateFitness();
             if (fitnessBefore < newFitness)
                 ind[index] = Convert.ToByte(isBitOne);
             else ind.OnMutation();
