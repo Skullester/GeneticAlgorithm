@@ -315,7 +315,7 @@
             comboBoxDimensions.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDimensions.Font = new Font("Segoe UI", 12F);
             comboBoxDimensions.FormattingEnabled = true;
-            comboBoxDimensions.Items.AddRange(new object[] { "2", "5", "10", "20" });
+            comboBoxDimensions.Items.AddRange(new object[] { "10", "20" });
             comboBoxDimensions.Location = new Point(336, 200);
             comboBoxDimensions.Name = "comboBoxDimensions";
             comboBoxDimensions.Size = new Size(210, 29);
