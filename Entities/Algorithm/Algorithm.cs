@@ -48,10 +48,18 @@ public class Algorithm
     {
         chart = new(mainForm.Chart1); Reset();
         var arg = 0;
-        //var tmp = 0d;
+        var tmp = 0d;
         Stopwatch sw = Stopwatch.StartNew();
         while (Function!.Best.Value > alpha)
         {
+            if (Generation == MaxGenerations)
+            {
+                var gen = Generation;
+                var value = Function!.Best.Value;
+                MessageBox.Show($"Решение не найдено! \nGen: {gen} \nFitness: {value}\nИзмените настройки алгоритма!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+                return;
+            }
             var parents = ParentChoosable!.FindPartners().ToList();
             List<Individual> list = new();
             foreach (var parent in parents)
@@ -66,26 +74,16 @@ public class Algorithm
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
-            var y = list.Average(x => x.Fitness);
-            //var y = min;
-            //if (Generation > 0)
-            //{
-            //    y = min - tmp;
-            //    //var y = list.Min(x => x.Fitness);
-
-            //}
+            var min = list.Min(x => x.Fitness);
+            var y = min;
+            if (Generation > 0)
+            {
+                y = min - tmp;
+            }
             chart.Draw(arg++, y);
-            //tmp = min;
+            tmp = min;
             // Thread.Sleep(Speed);
             Generation++;
-            if (Generation == MaxGenerations)
-            {
-                var gen = Generation;
-                var value = Function!.Best.Value;
-                MessageBox.Show($"Решение не найдено! \nGen: {gen} \nFitness: {value}\nИзмените настройки алгоритма!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Restart();
-                return;
-            }
         }
         sw.Stop();
         var milliseconds = sw.ElapsedMilliseconds;
