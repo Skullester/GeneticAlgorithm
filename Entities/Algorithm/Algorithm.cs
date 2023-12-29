@@ -5,7 +5,7 @@ public class Algorithm
 {
     public static double MUTATION_PROBABILITY = 0.2;
     public int MaxGenerations { get; set; }
-    private const double alpha = 1E-3;
+    private const double alpha = 1E-5;
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
