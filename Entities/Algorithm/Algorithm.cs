@@ -66,7 +66,7 @@ public class Algorithm
                 // Thread.Sleep(Speed);
                 pair.Survive();
             }
-            var y = list.Min(x => x.Fitness);
+            var y = list.Average(x => x.Fitness);
             //var y = min;
             //if (Generation > 0)
             //{

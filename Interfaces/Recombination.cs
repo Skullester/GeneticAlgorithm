@@ -15,7 +15,6 @@ public abstract class Recombination
         Individual first = pair[0];
         Individual second = pair[1];
         List<byte[]> oldGenes = [first.Genes, second.Genes];
-        //double[] oldFitnesses = { first.Fitness, second.Fitness };
         List<byte[]> tails = new();
         for (int i = pairCount - 1; i > -1; i--)
         {
