@@ -42,7 +42,7 @@ public class Algorithm
         Function!.Best.Reset();
         Generation = 0;
         mainForm.UpdateText(string.Empty, 0);
-        chart.Reset();
+        chart!.Reset();
     }
 
     public void Start()
