@@ -1,7 +1,7 @@
 ﻿namespace GeneticAlgorithm;
-public interface IFunction
+internal interface IFunction
 {
     public int N { get; set; }
-    Argument? Argument { get; set; }
-    double GetValue();
+    double GetValue(Argument arg);
+    Rastrigin.Pair Best { get; }
 }

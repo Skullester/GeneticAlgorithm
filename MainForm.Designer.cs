@@ -31,6 +31,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             comboBoxParents = new ComboBox();
             parentChoosingLabel = new Label();
@@ -56,7 +59,15 @@
             checkBoxAccelerated = new CheckBox();
             comboBoxDimensions = new ComboBox();
             labelDimension = new Label();
+            ListBoxArguments = new ListBox();
+            Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            label3 = new Label();
+            textBoxMutation = new TextBox();
+            labelAlgorithmTime = new Label();
+            comboBoxGenerations = new ComboBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Chart1).BeginInit();
             SuspendLayout();
             // 
             // comboBoxParents
@@ -134,9 +145,9 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 15F);
-            button1.Location = new Point(21, 349);
+            button1.Location = new Point(12, 349);
             button1.Name = "button1";
-            button1.Size = new Size(353, 88);
+            button1.Size = new Size(299, 97);
             button1.TabIndex = 10;
             button1.Text = "Начать скрещивание";
             button1.UseVisualStyleBackColor = true;
@@ -229,7 +240,7 @@
             // buttonRestart
             // 
             buttonRestart.Font = new Font("Segoe UI", 15F);
-            buttonRestart.Location = new Point(12, 464);
+            buttonRestart.Location = new Point(15, 735);
             buttonRestart.Name = "buttonRestart";
             buttonRestart.Size = new Size(170, 54);
             buttonRestart.TabIndex = 22;
@@ -249,7 +260,7 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.MarkerBorderWidth = 5;
+            series1.MarkerBorderWidth = 10;
             series1.Name = "Series1";
             chart.Series.Add(series1);
             chart.Size = new Size(17, 11);
@@ -261,7 +272,7 @@
             // 
             labelGeneration.AutoSize = true;
             labelGeneration.Font = new Font("Segoe UI", 15F);
-            labelGeneration.Location = new Point(582, 78);
+            labelGeneration.Location = new Point(12, 463);
             labelGeneration.Name = "labelGeneration";
             labelGeneration.Size = new Size(229, 28);
             labelGeneration.TabIndex = 25;
@@ -304,7 +315,7 @@
             comboBoxDimensions.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDimensions.Font = new Font("Segoe UI", 12F);
             comboBoxDimensions.FormattingEnabled = true;
-            comboBoxDimensions.Items.AddRange(new object[] { "2", "5", "10", "20" });
+            comboBoxDimensions.Items.AddRange(new object[] { "10", "20" });
             comboBoxDimensions.Location = new Point(336, 200);
             comboBoxDimensions.Name = "comboBoxDimensions";
             comboBoxDimensions.Size = new Size(210, 29);
@@ -320,11 +331,96 @@
             labelDimension.TabIndex = 30;
             labelDimension.Text = "Размерность(N):";
             // 
+            // ListBoxArguments
+            // 
+            ListBoxArguments.FormattingEnabled = true;
+            ListBoxArguments.ItemHeight = 15;
+            ListBoxArguments.Location = new Point(12, 510);
+            ListBoxArguments.Name = "ListBoxArguments";
+            ListBoxArguments.Size = new Size(534, 184);
+            ListBoxArguments.TabIndex = 31;
+            // 
+            // Chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            Chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            Chart1.Legends.Add(legend2);
+            Chart1.Location = new Point(592, 16);
+            Chart1.Name = "Chart1";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            Chart1.Series.Add(series2);
+            Chart1.Size = new Size(773, 529);
+            Chart1.TabIndex = 32;
+            Chart1.Text = "chart";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 17F);
+            label3.Location = new Point(336, 246);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 31);
+            label3.TabIndex = 33;
+            label3.Text = "Мутация:";
+            // 
+            // textBoxMutation
+            // 
+            textBoxMutation.Font = new Font("Segoe UI", 12F);
+            textBoxMutation.Location = new Point(336, 280);
+            textBoxMutation.Name = "textBoxMutation";
+            textBoxMutation.Size = new Size(100, 29);
+            textBoxMutation.TabIndex = 34;
+            textBoxMutation.Text = "0,2";
+            // 
+            // labelAlgorithmTime
+            // 
+            labelAlgorithmTime.AutoSize = true;
+            labelAlgorithmTime.Font = new Font("Segoe UI", 15F);
+            labelAlgorithmTime.Location = new Point(592, 566);
+            labelAlgorithmTime.Name = "labelAlgorithmTime";
+            labelAlgorithmTime.Size = new Size(201, 28);
+            labelAlgorithmTime.TabIndex = 35;
+            labelAlgorithmTime.Text = "Потраченное время:";
+            // 
+            // comboBoxGenerations
+            // 
+            comboBoxGenerations.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGenerations.Font = new Font("Segoe UI", 12F);
+            comboBoxGenerations.FormattingEnabled = true;
+            comboBoxGenerations.Items.AddRange(new object[] { "250", "300", "400", "500", "1000" });
+            comboBoxGenerations.Location = new Point(338, 363);
+            comboBoxGenerations.Name = "comboBoxGenerations";
+            comboBoxGenerations.Size = new Size(210, 29);
+            comboBoxGenerations.TabIndex = 36;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 17F);
+            label4.Location = new Point(336, 329);
+            label4.Name = "label4";
+            label4.Size = new Size(193, 31);
+            label4.TabIndex = 37;
+            label4.Text = "Макс. поколений";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1804, 801);
+            Controls.Add(label4);
+            Controls.Add(comboBoxGenerations);
+            Controls.Add(labelAlgorithmTime);
+            Controls.Add(textBoxMutation);
+            Controls.Add(label3);
+            Controls.Add(Chart1);
+            Controls.Add(ListBoxArguments);
             Controls.Add(labelDimension);
             Controls.Add(comboBoxDimensions);
             Controls.Add(checkBoxAccelerated);
@@ -353,6 +449,7 @@
             Name = "MainForm";
             Text = "Генетический Алгоритм";
             ((System.ComponentModel.ISupportInitialize)chart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -383,5 +480,13 @@
         public CheckBox checkBoxAccelerated;
         private ComboBox comboBoxDimensions;
         private Label labelDimension;
+        public ListBox ListBoxArguments;
+        public System.Windows.Forms.DataVisualization.Charting.Chart Chart;
+        public System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
+        private Label label3;
+        private TextBox textBoxMutation;
+        private Label labelAlgorithmTime;
+        private ComboBox comboBoxGenerations;
+        private Label label4;
     }
 }

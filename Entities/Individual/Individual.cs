@@ -16,7 +16,7 @@ public class Individual : IEnumerable<byte>
         get => Genes[index];
         set => Genes[index] = value;
     }
-    public double GetFitness()
+    public double CalculateFitness()
     {
         Fitness = GeneticAlgorithm.Fitness.GetFitness(this);
         return Fitness;
