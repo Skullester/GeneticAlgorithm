@@ -8,9 +8,9 @@ public static class BinaryDecoder
     private static double Normalize(string binaryStr)
     {
         var value = Decode(binaryStr);
-        double range = Fitness.MAX - Fitness.MIN;
+        double range = Fitness.Max - Fitness.Min;
         double normalizedValue = value / (Math.Pow(2, binaryStr.Length) - 1);
-        return Fitness.MIN + normalizedValue * range;
+        return Fitness.Min + normalizedValue * range;
     }
     public static Argument DecodeIndividual(Individual individual, int N)
     {
@@ -19,7 +19,7 @@ public static class BinaryDecoder
         var genesStr = string.Join("", genes);
         var length = genesStr.Length / N;
         var startIndex = 0;
-        for (int i = 0; i < arguments.Length; i++)
+        for (int i = 0; i < N; i++)
         {
             var binaryStr = genesStr.Substring(startIndex, length);
             var x = Normalize(binaryStr);

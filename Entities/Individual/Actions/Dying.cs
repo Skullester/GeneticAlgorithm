@@ -4,6 +4,6 @@ public class Dying : IAction
 {
     public void Act(Individual ind)
     {
-        ind.OnDying();
+        ind.Suicide();
     }
 }

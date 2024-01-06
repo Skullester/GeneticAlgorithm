@@ -5,12 +5,12 @@ internal class Rastrigin : IFunction
 {
     internal class Pair
     {
-        internal double Value { get; set; } = double.MaxValue;
-        internal Argument? Argument;
+        internal double value { get; set; } = double.MaxValue;
+        internal Argument? argument;
         internal void Reset()
         {
-            Value = double.MaxValue;
-            Argument = default;
+            value = double.MaxValue;
+            argument = default;
         }
     }
     private readonly int A;
@@ -31,10 +31,10 @@ internal class Rastrigin : IFunction
             sum += x * x - A * Cos(2 * PI * x);
         }
         var result = A * n + sum;
-        if (result < Best.Value)
+        if (result < Best.value)
         {
-            Best.Value = result;
-            Best.Argument = arg;
+            Best.value = result;
+            Best.argument = arg;
         }
         return result;
     }

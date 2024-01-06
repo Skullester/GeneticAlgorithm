@@ -10,6 +10,7 @@ public abstract class Recombination
     {
         Algorithm = algorithm;
     }
+
     protected Pair GetGap(Pair pair, int firstGap, int secondGap)
     {
         Individual first = pair[0];
@@ -35,9 +36,8 @@ public abstract class Recombination
             var newFitness = pair[i].CalculateFitness();
             if (newFitness > oldFitness)
                 pair[i].Genes = oldGenes[i];
-            else pair[i].OnDying();
+            else pair[i].Suicide();
         }
         return pair;
     }
-
 }

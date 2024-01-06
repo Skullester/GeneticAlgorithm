@@ -31,11 +31,6 @@ public partial class MainForm : Form
         labelAlgorithmTime.Text = "Потраченное время: " + milliseconds.ToString() + " мс";
         labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + value;
     }
-    protected override void OnFormClosing(FormClosingEventArgs e)
-    {
-        // field?.Life.Abort();
-        // geneticAlgorithm.Process.Interrupt();
-    }
     private void OnMutationChanged(object? o, EventArgs e)
     {
         var p = double.Parse(textBoxMutation.Text);
@@ -47,7 +42,6 @@ public partial class MainForm : Form
     {
         var generations = int.Parse(comboBoxGenerations.Text);
         geneticAlgorithm.MaxGenerations = generations;
-
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {
@@ -95,6 +89,7 @@ public partial class MainForm : Form
             MessageBox.Show("Сначала создайте изначальную популяцию!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         return isValidated;
     }
+
     private void StartCrossover(object o, EventArgs e)
     {
         if (geneticAlgorithm.IsSucceed)

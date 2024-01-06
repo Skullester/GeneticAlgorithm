@@ -21,7 +21,7 @@ public class Mutation : IAction
             var newFitness = ind.CalculateFitness();
             if (fitnessBefore < newFitness)
                 ind[index] = Convert.ToByte(isBitOne);
-            else ind.OnMutation();
+            else ind.Mutate();
         }
     }
 }

@@ -11,37 +11,45 @@ public class Individual : IEnumerable<byte>
     public Individual(Population pop) : this(pop, new byte[pop.GenesCount])
     {
     }
+
     public byte this[int index]
     {
         get => Genes[index];
         set => Genes[index] = value;
     }
+
     public double CalculateFitness()
     {
         Fitness = GeneticAlgorithm.Fitness.GetFitness(this);
         return Fitness;
     }
+
     public Individual(Population pop, params byte[] genes)
     {
         Population = pop;
         Genes = genes;
     }
-    public void OnDying()
+
+    public void Suicide()
     {
         Handler?.Invoke(Color.Red);
     }
-    public void OnSurvive()
+
+    public void Survive()
     {
         Handler?.Invoke(Color.ForestGreen);
     }
-    public void OnMutation()
+
+    public void Mutate()
     {
         Handler?.Invoke(Color.Yellow);
     }
-    public void OnReset()
+
+    public void Reset()
     {
         Handler?.Invoke(Color.Black);
     }
+
     public override string ToString()
     {
         return string.Join("", Genes) + $" - {Fitness}";

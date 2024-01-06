@@ -30,11 +30,14 @@ public class Population : IEnumerable<Individual>
                 individual[j] = (byte)rand.Next(0, 1 + 1);
             }
             individual.Fitness = Fitness.GetFitness(individual);
-            pop.individuals.Add(individual);
+            pop.Add(individual);
         }
         return pop;
     }
-
+    private void Add(Individual individual)
+    {
+        individuals.Add(individual);
+    }
     public IEnumerator<Individual> GetEnumerator()
     {
         return individuals.GetEnumerator();

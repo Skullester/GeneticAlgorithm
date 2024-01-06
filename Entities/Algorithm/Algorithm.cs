@@ -7,7 +7,7 @@ public class Algorithm
     private const double delta = 1E-5;//-3
     public int MaxGenerations { get; set; }
 
-    public const int START_SPEED = 40;
+    public const int StartSpeed = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
     public int Generation { get; private set; }
@@ -17,15 +17,15 @@ public class Algorithm
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
     private Chart? chart;
-    private int speed = START_SPEED;
-    private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
+    private int speed = StartSpeed;
+    private bool isAccelerated => mainForm.checkBoxAccelerated.Checked;
     public bool IsSucceed { get; private set; }
     public int Speed
     {
         get => speed;
         set
         {
-            if (IsAccelerated)
+            if (isAccelerated)
                 speed = 0;
             else
                 speed = value;
@@ -51,7 +51,7 @@ public class Algorithm
         Reset();
         var arg = 0;
         Stopwatch sw = Stopwatch.StartNew();
-        while (Function!.Best.Value > delta)
+        while (Function!.Best.value > delta)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
             List<Individual> list = new();
@@ -71,7 +71,7 @@ public class Algorithm
             if (Generation == MaxGenerations)
             {
                 var gen = Generation;
-                var value = Function!.Best.Value;
+                var value = Function!.Best.value;
                 MessageBox.Show($"Решение не найдено! \nGen: {gen} \nFitness: {value}\nИзмените настройки алгоритма!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Restart();
                 return;
@@ -79,9 +79,9 @@ public class Algorithm
         }
         sw.Stop();
         var milliseconds = sw.ElapsedMilliseconds;
-        mainForm.UpdateText(Function.Best.Value, milliseconds);
+        mainForm.UpdateText(Function.Best.value, milliseconds);
         // Process.Interrupt();
-        foreach (var x in Function.Best.Argument!)
+        foreach (var x in Function.Best.argument!)
         {
             mainForm.ListBoxArguments.Items.Add(x);
         }
@@ -89,7 +89,7 @@ public class Algorithm
     }
     public void SetSpeed()
     {
-        Speed = START_SPEED / Multiplier;
+        Speed = StartSpeed / Multiplier;
     }
 
 }
