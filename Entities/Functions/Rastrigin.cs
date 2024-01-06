@@ -3,7 +3,7 @@ using static Math;
 
 internal class Rastrigin : IFunction
 {
-    public class Pair
+    internal class Pair
     {
         internal double Value { get; set; } = double.MaxValue;
         internal Argument? Argument;

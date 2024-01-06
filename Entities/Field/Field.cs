@@ -11,7 +11,7 @@ public class Field
     private TableLayoutPanel? fieldPanel;
     static Field()
     {
-        colors = [Color.Black/*Color.DarkGreen, Color.Green, Color.LawnGreen*/];
+        colors = [Color.Black];
     }
     public Field(Population population, MainForm mainForm)
     {
@@ -26,19 +26,21 @@ public class Field
     }
     private void InitializePanel()
     {
-        fieldPanel = new TableLayoutPanel();
-        fieldPanel.Size = new Size(600, 600);
-        if (form.Controls[form.Controls.Count - 1] is TableLayoutPanel)
+        fieldPanel = new TableLayoutPanel()
+        {
+            Size = new Size(600, 600),
+            RowCount = Size,
+            ColumnCount = Size,
+            Location = new Point(580, 120)
+        };
+        if (form.Controls[^1] is TableLayoutPanel)
             form.Controls.RemoveAt(form.Controls.Count - 1);
         form.Controls.Add(fieldPanel);
-        fieldPanel.RowCount = Size;
-        fieldPanel.ColumnCount = Size;
         for (int i = 0; i < Size; i++)
         {
             fieldPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20f));
             fieldPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20f));
         }
-        fieldPanel.Location = new Point(580, 120);
     }
     private void FillField()
     {
@@ -51,15 +53,16 @@ public class Field
         {
             for (int j = 0; j < Size; j++)
             {
-                var button = new Button();
                 var index = rand.Next(0, colors.Length);
-                button.BackColor = colors[index];
-                button.Enabled = false;
+                var button = new Button()
+                {
+                    BackColor = colors[index],
+                    Enabled = false
+                };
                 var cell = new Cell(population[popIndex++], button);
                 fieldPanel!.Controls.Add(button);
                 this[i, j] = cell;
             }
         }
-        //Life = new(this);
     }
 }

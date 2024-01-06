@@ -41,7 +41,7 @@ public partial class MainForm : Form
         var p = double.Parse(textBoxMutation.Text);
         if (p <= 0 || p > 1)
             throw new ArgumentException("Неверный ввод!");
-        Algorithm.MUTATION_PROBABILITY = p;
+        Algorithm.MutationProbability = p;
     }
     private void OnGenerationsChanged(object? o, EventArgs e)
     {

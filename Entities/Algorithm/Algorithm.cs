@@ -3,9 +3,10 @@
 namespace GeneticAlgorithm;
 public class Algorithm
 {
-    public static double MUTATION_PROBABILITY = 0.2;
+    public static double MutationProbability = 0.2;
+    private const double delta = 1E-5;//-3
     public int MaxGenerations { get; set; }
-    private const double alpha = 1E-5;//-3
+
     public const int START_SPEED = 40;
     public int Multiplier { get; set; }
     private readonly MainForm mainForm;
@@ -15,8 +16,7 @@ public class Algorithm
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
-    public Chart? chart { get; private set; }
-    // public Thread Process { get; }
+    private Chart? chart;
     private int speed = START_SPEED;
     private bool IsAccelerated => mainForm.checkBoxAccelerated.Checked;
     public bool IsSucceed { get; private set; }
@@ -44,13 +44,14 @@ public class Algorithm
         mainForm.UpdateText(string.Empty, 0);
         chart.Reset();
     }
+
     public void Start()
     {
-        chart = new(mainForm.Chart1); Reset();
+        chart = new(mainForm.Chart1);
+        Reset();
         var arg = 0;
-        //var tmp = 0d;
         Stopwatch sw = Stopwatch.StartNew();
-        while (Function!.Best.Value > alpha)
+        while (Function!.Best.Value > delta)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
             List<Individual> list = new();
@@ -61,22 +62,11 @@ public class Algorithm
                 {
                     list.Add(child);
                 }
-                //Thread.Sleep(Speed);
                 pair.Mutate();
-                // Thread.Sleep(Speed);
                 pair.Survive();
             }
             var y = list.Min(x => x.Fitness);
-            //var y = min;
-            //if (Generation > 0)
-            //{
-            //    y = min - tmp;
-            //    //var y = list.Min(x => x.Fitness);
-
-            //}
             chart.Draw(arg++, y);
-            //tmp = min;
-            // Thread.Sleep(Speed);
             Generation++;
             if (Generation == MaxGenerations)
             {

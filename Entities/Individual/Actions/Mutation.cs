@@ -4,7 +4,7 @@ namespace GeneticAlgorithm;
 
 public class Mutation : IAction
 {
-    private readonly double probability = Algorithm.MUTATION_PROBABILITY;
+    private readonly double probability = Algorithm.MutationProbability;
     private readonly Random random;
     public Mutation()
     {
