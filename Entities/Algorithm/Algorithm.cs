@@ -65,7 +65,9 @@ public class Algorithm
                 pair.Mutate();
                 pair.Survive();
             }
-            var y = list.Min(x => x.Fitness);
+            //var y = list.Min(x => x.Fitness);//вариант с минимумом
+            //var y = list.Average(x => x.Fitness);//вариант avg
+            // var y =
             chart.Draw(arg++, y);
             Generation++;
             if (Generation == MaxGenerations)
