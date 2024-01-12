@@ -40,8 +40,10 @@ public partial class MainForm : Form
     }
     private void OnGenerationsChanged(object? o, EventArgs e)
     {
-        var generations = int.Parse(comboBoxGenerations.Text);
-        geneticAlgorithm.MaxGenerations = generations;
+        _ = int.TryParse(comboBoxGenerations.Text, out var gen);
+        if (gen == 0)
+            gen = int.MaxValue;
+        geneticAlgorithm.MaxGenerations = gen;
     }
     private void OnComboBoxSpeedChanged(object? o, EventArgs e)
     {

@@ -136,7 +136,7 @@
             comboBoxCountOfGenes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCountOfGenes.Font = new Font("Segoe UI", 12F);
             comboBoxCountOfGenes.FormattingEnabled = true;
-            comboBoxCountOfGenes.Items.AddRange(new object[] { "20", "50", "100", "200", "500" });
+            comboBoxCountOfGenes.Items.AddRange(new object[] { "100", "200", "500" });
             comboBoxCountOfGenes.Location = new Point(21, 129);
             comboBoxCountOfGenes.Name = "comboBoxCountOfGenes";
             comboBoxCountOfGenes.Size = new Size(210, 29);
@@ -225,6 +225,7 @@
             labelSpeed.Size = new Size(101, 28);
             labelSpeed.TabIndex = 20;
             labelSpeed.Text = "Скорость:";
+            labelSpeed.Visible = false;
             // 
             // comboBoxSpeed
             // 
@@ -236,6 +237,7 @@
             comboBoxSpeed.Name = "comboBoxSpeed";
             comboBoxSpeed.Size = new Size(66, 29);
             comboBoxSpeed.TabIndex = 21;
+            comboBoxSpeed.Visible = false;
             // 
             // buttonRestart
             // 
@@ -309,6 +311,7 @@
             checkBoxAccelerated.TabIndex = 28;
             checkBoxAccelerated.Text = "Без задержек";
             checkBoxAccelerated.UseVisualStyleBackColor = true;
+            checkBoxAccelerated.Visible = false;
             // 
             // comboBoxDimensions
             // 
@@ -376,7 +379,7 @@
             textBoxMutation.Name = "textBoxMutation";
             textBoxMutation.Size = new Size(100, 29);
             textBoxMutation.TabIndex = 34;
-            textBoxMutation.Text = "0,2";
+            textBoxMutation.Text = "0,01";
             // 
             // labelAlgorithmTime
             // 
@@ -393,7 +396,7 @@
             comboBoxGenerations.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGenerations.Font = new Font("Segoe UI", 12F);
             comboBoxGenerations.FormattingEnabled = true;
-            comboBoxGenerations.Items.AddRange(new object[] { "250", "300", "400", "500", "1000" });
+            comboBoxGenerations.Items.AddRange(new object[] { "250", "300", "400", "500", "1000", "INF" });
             comboBoxGenerations.Location = new Point(338, 363);
             comboBoxGenerations.Name = "comboBoxGenerations";
             comboBoxGenerations.Size = new Size(210, 29);
