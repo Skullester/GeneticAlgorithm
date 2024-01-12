@@ -2,10 +2,11 @@
 
 public static class Fitness
 {
+    public static double FitnessValue { get; private set; } = double.MaxValue;
     public const double Min = -5.12;
     public const double Max = 5.12;
+
     private static IFunction? function;
-    public static double FitnessValue { get; private set; } = double.MaxValue;
     public static double GetFitness(Individual individual)
     {
         if (function is null)
