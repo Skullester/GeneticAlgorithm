@@ -3,51 +3,35 @@
 namespace GeneticAlgorithm;
 public class Algorithm
 {
-    public static double MutationProbability = 0.01;
-    private const double delta = 1E-5;//-3
-    public int MaxGenerations { get; set; }
+    public static double MutationProbability { get; private set; } = 0.01;
+    private const double delta = 1E-5;
 
-    public const int StartSpeed = 40;
-    public int Multiplier { get; set; }
-    private readonly MainForm mainForm;
-    public int Generation { get; private set; }
-    internal IFunction? Function { get; set; }
     public Random Random { get; } = new();
     public ParentChoosing? ParentChoosable { get; set; }
     public Recombination? Recombination { get; set; }
     public Population? Population { get; set; }
-    private Chart? chart;
-    private int speed = StartSpeed;
-    private bool isAccelerated => mainForm.checkBoxAccelerated.Checked;
-    public bool IsSucceed { get; private set; }
-    public int Speed
-    {
-        get => speed;
-        set
-        {
-            if (isAccelerated)
-                speed = 0;
-            else
-                speed = value;
-        }
-    }
+    public int MaxGenerations { get; set; }
+    public int Generation { get; private set; }
+
+    private readonly MainForm mainForm;
+    internal IFunction? Function { get; set; }
+    private readonly Chart chart;
     public Algorithm(MainForm mainForm)
     {
-        // Process = new(Start);
         this.mainForm = mainForm;
+        chart = new(mainForm.Chart1);
     }
 
     private void Reset()
     {
         Function!.Best.Reset();
         Generation = 0;
-        mainForm.UpdateText(string.Empty, 0);
         chart!.Reset();
     }
+    public static void SetMutation(double p) => MutationProbability = p;
 
     public void Start()
     {
-        chart = new(mainForm.Chart1);
         Reset();
         var arg = 0;
         Stopwatch sw = Stopwatch.StartNew();
@@ -59,9 +43,7 @@ public class Algorithm
             {
                 var pair = Recombination!.Cross(parent);
                 foreach (var child in pair)
-                {
                     list.Add(child);
-                }
                 pair.Mutate();
                 pair.Survive();
             }
@@ -73,23 +55,15 @@ public class Algorithm
                 var gen = Generation;
                 var value = Function!.Best.value;
                 MessageBox.Show($"Решение не найдено! \nGen: {gen} \nFitness: {value}\nИзмените настройки алгоритма!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Restart();
                 return;
             }
+            mainForm.LabelGeneration.Invoke(() => mainForm.LabelGeneration.Text = "Поколение: " + Generation + " Оптимум: " + Function.Best.value);
         }
         sw.Stop();
         var milliseconds = sw.ElapsedMilliseconds;
-        mainForm.UpdateText(Function.Best.value, milliseconds);
-        // Process.Interrupt();
+        mainForm.LabelAlgorithmTime.Invoke(() => mainForm.LabelAlgorithmTime.Text = "Потраченное время: " + milliseconds.ToString() + " мс");
         foreach (var x in Function.Best.argument!)
-        {
-            mainForm.ListBoxArguments.Items.Add(x);
-        }
-        IsSucceed = true;
+            mainForm.ListBoxArguments.Invoke(() => mainForm.ListBoxArguments.Items.Add(x));
+        MessageBox.Show("Решение найдено!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
-    public void SetSpeed()
-    {
-        Speed = StartSpeed / Multiplier;
-    }
-
 }

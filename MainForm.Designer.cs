@@ -39,7 +39,6 @@
             parentChoosingLabel = new Label();
             wayOfRecombinationLabel = new Label();
             comboBoxRecombinations = new ComboBox();
-            btnConfirm = new Button();
             label2 = new Label();
             comboBoxCountOfGenes = new ComboBox();
             button1 = new Button();
@@ -49,21 +48,18 @@
             labelMutation = new Label();
             labelSelection = new Label();
             labelDeath = new Label();
-            labelSpeed = new Label();
-            comboBoxSpeed = new ComboBox();
             buttonRestart = new Button();
             chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            labelGeneration = new Label();
+            LabelGeneration = new Label();
             comboBoxIndividuals = new ComboBox();
             label1 = new Label();
-            checkBoxAccelerated = new CheckBox();
             comboBoxDimensions = new ComboBox();
             labelDimension = new Label();
             ListBoxArguments = new ListBox();
             Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             label3 = new Label();
             textBoxMutation = new TextBox();
-            labelAlgorithmTime = new Label();
+            LabelAlgorithmTime = new Label();
             comboBoxGenerations = new ComboBox();
             label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
@@ -110,17 +106,6 @@
             comboBoxRecombinations.Size = new Size(241, 29);
             comboBoxRecombinations.TabIndex = 3;
             // 
-            // btnConfirm
-            // 
-            btnConfirm.Font = new Font("Segoe UI", 15F);
-            btnConfirm.Location = new Point(21, 179);
-            btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(194, 65);
-            btnConfirm.TabIndex = 6;
-            btnConfirm.Text = "Сгенерировать популяцию";
-            btnConfirm.UseVisualStyleBackColor = true;
-            btnConfirm.Click += GeneratePopulation;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -144,12 +129,12 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 15F);
-            button1.Location = new Point(12, 349);
+            button1.Font = new Font("Segoe UI", 18F);
+            button1.Location = new Point(12, 200);
             button1.Name = "button1";
             button1.Size = new Size(299, 97);
             button1.TabIndex = 10;
-            button1.Text = "Начать скрещивание";
+            button1.Text = "Начать";
             button1.UseVisualStyleBackColor = true;
             button1.Click += StartCrossover;
             // 
@@ -216,33 +201,10 @@
             labelDeath.TabIndex = 19;
             labelDeath.Text = "Смерть";
             // 
-            // labelSpeed
-            // 
-            labelSpeed.AutoSize = true;
-            labelSpeed.Font = new Font("Segoe UI", 15F);
-            labelSpeed.Location = new Point(12, 261);
-            labelSpeed.Name = "labelSpeed";
-            labelSpeed.Size = new Size(101, 28);
-            labelSpeed.TabIndex = 20;
-            labelSpeed.Text = "Скорость:";
-            labelSpeed.Visible = false;
-            // 
-            // comboBoxSpeed
-            // 
-            comboBoxSpeed.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSpeed.Font = new Font("Segoe UI", 12F);
-            comboBoxSpeed.FormattingEnabled = true;
-            comboBoxSpeed.Items.AddRange(new object[] { "x1", "x2", "x5", "x10", "x20" });
-            comboBoxSpeed.Location = new Point(119, 261);
-            comboBoxSpeed.Name = "comboBoxSpeed";
-            comboBoxSpeed.Size = new Size(66, 29);
-            comboBoxSpeed.TabIndex = 21;
-            comboBoxSpeed.Visible = false;
-            // 
             // buttonRestart
             // 
             buttonRestart.Font = new Font("Segoe UI", 15F);
-            buttonRestart.Location = new Point(15, 735);
+            buttonRestart.Location = new Point(12, 673);
             buttonRestart.Name = "buttonRestart";
             buttonRestart.Size = new Size(170, 54);
             buttonRestart.TabIndex = 22;
@@ -270,22 +232,22 @@
             chart.Text = "chart";
             chart.Visible = false;
             // 
-            // labelGeneration
+            // LabelGeneration
             // 
-            labelGeneration.AutoSize = true;
-            labelGeneration.Font = new Font("Segoe UI", 15F);
-            labelGeneration.Location = new Point(12, 463);
-            labelGeneration.Name = "labelGeneration";
-            labelGeneration.Size = new Size(229, 28);
-            labelGeneration.TabIndex = 25;
-            labelGeneration.Text = "Поколение: 0 Оптимум:";
+            LabelGeneration.AutoSize = true;
+            LabelGeneration.Font = new Font("Segoe UI", 15F);
+            LabelGeneration.Location = new Point(12, 408);
+            LabelGeneration.Name = "LabelGeneration";
+            LabelGeneration.Size = new Size(229, 28);
+            LabelGeneration.TabIndex = 25;
+            LabelGeneration.Text = "Поколение: 0 Оптимум:";
             // 
             // comboBoxIndividuals
             // 
             comboBoxIndividuals.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxIndividuals.Font = new Font("Segoe UI", 12F);
             comboBoxIndividuals.FormattingEnabled = true;
-            comboBoxIndividuals.Items.AddRange(new object[] { "32", "64", "128", "256", "512", "1024" });
+            comboBoxIndividuals.Items.AddRange(new object[] { "1024", "2048", "4096" });
             comboBoxIndividuals.Location = new Point(336, 129);
             comboBoxIndividuals.Name = "comboBoxIndividuals";
             comboBoxIndividuals.Size = new Size(210, 29);
@@ -300,18 +262,6 @@
             label1.Size = new Size(221, 31);
             label1.TabIndex = 27;
             label1.Text = "Количество особей:";
-            // 
-            // checkBoxAccelerated
-            // 
-            checkBoxAccelerated.AutoSize = true;
-            checkBoxAccelerated.Font = new Font("Segoe UI", 15F);
-            checkBoxAccelerated.Location = new Point(21, 311);
-            checkBoxAccelerated.Name = "checkBoxAccelerated";
-            checkBoxAccelerated.Size = new Size(153, 32);
-            checkBoxAccelerated.TabIndex = 28;
-            checkBoxAccelerated.Text = "Без задержек";
-            checkBoxAccelerated.UseVisualStyleBackColor = true;
-            checkBoxAccelerated.Visible = false;
             // 
             // comboBoxDimensions
             // 
@@ -338,9 +288,9 @@
             // 
             ListBoxArguments.FormattingEnabled = true;
             ListBoxArguments.ItemHeight = 15;
-            ListBoxArguments.Location = new Point(12, 510);
+            ListBoxArguments.Location = new Point(12, 455);
             ListBoxArguments.Name = "ListBoxArguments";
-            ListBoxArguments.Size = new Size(534, 184);
+            ListBoxArguments.Size = new Size(534, 199);
             ListBoxArguments.TabIndex = 31;
             // 
             // Chart1
@@ -358,7 +308,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             Chart1.Series.Add(series2);
-            Chart1.Size = new Size(773, 529);
+            Chart1.Size = new Size(958, 597);
             Chart1.TabIndex = 32;
             Chart1.Text = "chart";
             // 
@@ -381,15 +331,15 @@
             textBoxMutation.TabIndex = 34;
             textBoxMutation.Text = "0,01";
             // 
-            // labelAlgorithmTime
+            // LabelAlgorithmTime
             // 
-            labelAlgorithmTime.AutoSize = true;
-            labelAlgorithmTime.Font = new Font("Segoe UI", 15F);
-            labelAlgorithmTime.Location = new Point(592, 566);
-            labelAlgorithmTime.Name = "labelAlgorithmTime";
-            labelAlgorithmTime.Size = new Size(201, 28);
-            labelAlgorithmTime.TabIndex = 35;
-            labelAlgorithmTime.Text = "Потраченное время:";
+            LabelAlgorithmTime.AutoSize = true;
+            LabelAlgorithmTime.Font = new Font("Segoe UI", 15F);
+            LabelAlgorithmTime.Location = new Point(218, 686);
+            LabelAlgorithmTime.Name = "LabelAlgorithmTime";
+            LabelAlgorithmTime.Size = new Size(201, 28);
+            LabelAlgorithmTime.TabIndex = 35;
+            LabelAlgorithmTime.Text = "Потраченное время:";
             // 
             // comboBoxGenerations
             // 
@@ -419,21 +369,18 @@
             ClientSize = new Size(1804, 801);
             Controls.Add(label4);
             Controls.Add(comboBoxGenerations);
-            Controls.Add(labelAlgorithmTime);
+            Controls.Add(LabelAlgorithmTime);
             Controls.Add(textBoxMutation);
             Controls.Add(label3);
             Controls.Add(Chart1);
             Controls.Add(ListBoxArguments);
             Controls.Add(labelDimension);
             Controls.Add(comboBoxDimensions);
-            Controls.Add(checkBoxAccelerated);
             Controls.Add(label1);
             Controls.Add(comboBoxIndividuals);
-            Controls.Add(labelGeneration);
+            Controls.Add(LabelGeneration);
             Controls.Add(chart);
             Controls.Add(buttonRestart);
-            Controls.Add(comboBoxSpeed);
-            Controls.Add(labelSpeed);
             Controls.Add(labelDeath);
             Controls.Add(labelSelection);
             Controls.Add(labelMutation);
@@ -443,7 +390,6 @@
             Controls.Add(button1);
             Controls.Add(comboBoxCountOfGenes);
             Controls.Add(label2);
-            Controls.Add(btnConfirm);
             Controls.Add(comboBoxRecombinations);
             Controls.Add(wayOfRecombinationLabel);
             Controls.Add(parentChoosingLabel);
@@ -463,7 +409,6 @@
         private Label parentChoosingLabel;
         private Label wayOfRecombinationLabel;
         private ComboBox comboBoxRecombinations;
-        private Button btnConfirm;
         private Label label2;
         private ComboBox comboBoxCountOfGenes;
         private Button button1;
@@ -473,14 +418,11 @@
         private Label labelMutation;
         private Label labelSelection;
         private Label labelDeath;
-        private Label labelSpeed;
-        private ComboBox comboBoxSpeed;
         private Button buttonRestart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private Label labelGeneration;
+        public Label LabelGeneration;
         private ComboBox comboBoxIndividuals;
         private Label label1;
-        public CheckBox checkBoxAccelerated;
         private ComboBox comboBoxDimensions;
         private Label labelDimension;
         public ListBox ListBoxArguments;
@@ -488,7 +430,7 @@
         public System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
         private Label label3;
         private TextBox textBoxMutation;
-        private Label labelAlgorithmTime;
+        public Label LabelAlgorithmTime;
         private ComboBox comboBoxGenerations;
         private Label label4;
     }

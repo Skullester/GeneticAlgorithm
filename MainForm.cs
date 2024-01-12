@@ -4,20 +4,22 @@ public partial class MainForm : Form
 {
     private readonly Algorithm geneticAlgorithm;
     private Field? field;
+    public Thread? AlgorithmThread { get; private set; }
     public MainForm()
     {
         InitializeComponent();
         geneticAlgorithm = new(this);
         Initialize();
     }
+
     private void Initialize()
     {
         comboBoxGenerations.SelectedValueChanged += OnGenerationsChanged;
-        checkBoxAccelerated.CheckedChanged += OnCheckBoxAccelerated;
+        // checkBoxAccelerated.CheckedChanged += OnCheckBoxAccelerated;
         textBoxMutation.TextChanged += OnGenerationsChanged;
         comboBoxParents.Items.AddRange([new Panmixia(geneticAlgorithm), new Inbreeding(geneticAlgorithm), new Outbreeding(geneticAlgorithm), new Tournament(geneticAlgorithm), new Roulette(geneticAlgorithm)]);
         comboBoxRecombinations.Items.AddRange([new SingleCrossover(geneticAlgorithm), new DualCrossover(geneticAlgorithm)]);
-        comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
+        //comboBoxSpeed.SelectedValueChanged += OnComboBoxSpeedChanged;
         comboBoxParents.SelectedValueChanged += OnComboBoxParentValueChanged;
         comboBoxRecombinations.SelectedValueChanged += OnComboBoxRecombinationValueChanged;
         foreach (var item in Controls)
@@ -26,18 +28,15 @@ public partial class MainForm : Form
                 cb.SelectedIndex = 0;
         }
     }
-    public void UpdateText<T>(T value, double milliseconds)
-    {
-        labelAlgorithmTime.Text = "Потраченное время: " + milliseconds.ToString() + " мс";
-        labelGeneration.Text = "Поколение: " + geneticAlgorithm.Generation + " Оптимум: " + value;
-    }
+
     private void OnMutationChanged(object? o, EventArgs e)
     {
         var p = double.Parse(textBoxMutation.Text);
         if (p <= 0 || p > 1)
             throw new ArgumentException("Неверный ввод!");
-        Algorithm.MutationProbability = p;
+        Algorithm.SetMutation(p);
     }
+
     private void OnGenerationsChanged(object? o, EventArgs e)
     {
         _ = int.TryParse(comboBoxGenerations.Text, out var gen);
@@ -45,38 +44,38 @@ public partial class MainForm : Form
             gen = int.MaxValue;
         geneticAlgorithm.MaxGenerations = gen;
     }
-    private void OnComboBoxSpeedChanged(object? o, EventArgs e)
-    {
-        var multiplier = int.Parse((comboBoxSpeed.SelectedItem as string)!.Split('x')[1]);
-        geneticAlgorithm.Multiplier = multiplier;
-        geneticAlgorithm.SetSpeed();
-    }
-    private void OnCheckBoxAccelerated(object? o, EventArgs e)
-    {
-        geneticAlgorithm.SetSpeed();
-    }
+
     private void OnComboBoxParentValueChanged(object? o, EventArgs e)
     {
         geneticAlgorithm.ParentChoosable = comboBoxParents.SelectedItem as ParentChoosing;
     }
+
     private void OnComboBoxRecombinationValueChanged(object? o, EventArgs e)
     {
         geneticAlgorithm.Recombination = comboBoxRecombinations.SelectedItem as Recombination;
     }
+
     private void SetAlgorithmFunction()
     {
         var N = int.Parse(comboBoxDimensions.Text);
         geneticAlgorithm.Function = new Rastrigin(10, N);
     }
-    private void GeneratePopulation(object sender, EventArgs e)
+
+    private void Reset()
     {
+        AlgorithmThread = new(geneticAlgorithm.Start);
+        AlgorithmThread.IsBackground = true;
+        ListBoxArguments.Items.Clear();
+    }
+
+    private void GeneratePopulation()
+    {
+        Reset();
         SetAlgorithmFunction();
         Fitness.SetFunction(geneticAlgorithm.Function!);
         var genesCount = int.Parse(comboBoxCountOfGenes.Text);
         var indCount = int.Parse(comboBoxIndividuals.Text);
         geneticAlgorithm.Population = Population.GetRandomPopulation(genesCount, indCount);
-        // CreateField();
-        MessageBox.Show("Популяция успешно создана!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void CreateField()
@@ -94,11 +93,10 @@ public partial class MainForm : Form
 
     private void StartCrossover(object o, EventArgs e)
     {
-        if (geneticAlgorithm.IsSucceed)
-            throw new ArgumentException("Перезапустите программу!");
+        GeneratePopulation();
         bool isValidated = ValidateParameters();
         if (isValidated)
-            geneticAlgorithm./*Process.*/Start();
+            AlgorithmThread!.Start();
     }
 
     public void Restart(object sender, EventArgs e)
