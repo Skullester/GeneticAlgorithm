@@ -51,7 +51,6 @@ public class Algorithm
         Reset();
         var arg = 0;
         Stopwatch sw = Stopwatch.StartNew();
-        var tmp = 0d;
         while (Function!.Best.value > delta)
         {
             var parents = ParentChoosable!.FindPartners().ToList();
@@ -66,15 +65,7 @@ public class Algorithm
                 pair.Mutate();
                 pair.Survive();
             }
-            /* 
-             * curr-prev способ
-             * var min = list.Min(x => x.Fitness);
-             var y = min;
-             if (Generation > 0)
-                 y = min - tmp;*/
-
-            var y = list.Min(x => x.Fitness);//вариант с минимумом
-            //var y = list.Average(x => x.Fitness);//вариант avg
+            var y = list.Min(x => x.Fitness);
             chart.Draw(arg++, y);
             Generation++;
             if (Generation == MaxGenerations)
