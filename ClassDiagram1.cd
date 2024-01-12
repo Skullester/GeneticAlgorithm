@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="GeneticAlgorithm.Algorithm" Collapsed="true">
-    <Position X="14.25" Y="0.5" Width="1.5" />
+    <Position X="15" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAACBAAAAIAgAAAAABACAAhQAAAAAAAAAAABI=</HashCode>
+      <HashCode>AAAAAACAACAABAAIQgAAABJBACAAhQAAAAAABEAAERA=</HashCode>
       <FileName>Entities\Algorithm\Algorithm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GeneticAlgorithm.BinaryDecoder" Collapsed="true">
-    <Position X="16" Y="0.5" Width="1.5" />
+    <Position X="16.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Entities\Algorithm\BinaryDecoder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GeneticAlgorithm.Fitness" Collapsed="true">
-    <Position X="16" Y="1.5" Width="1.5" />
+    <Position X="16.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAggAEAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAABAAAAAAEggAEAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Entities\Algorithm\Fitness.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GeneticAlgorithm.Rastrigin" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="19.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Entities\Algorithm\Rastrigin.cs</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAIBAAAAA=</HashCode>
+      <FileName>Entities\Functions\Rastrigin.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="GeneticAlgorithm.Cell" Collapsed="true">
-    <Position X="17.75" Y="0.5" Width="1.5" />
+    <Position X="14.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Entities\Field\Cell.cs</FileName>
@@ -39,7 +39,7 @@
   <Class Name="GeneticAlgorithm.Field" Collapsed="true">
     <Position X="14.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAgAgAAACAMAAAAAAAAAACCAAAAAAAABAAA=</HashCode>
+      <HashCode>AQAAAAAAAAgAgAAACAMAAAAAAAAAACCAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Field\Field.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -61,7 +61,7 @@
   <Class Name="GeneticAlgorithm.Mutation" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="6.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAEA=</HashCode>
       <FileName>Entities\Individual\Actions\Mutation.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -82,33 +82,33 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="GeneticAlgorithm.Survive" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="GeneticAlgorithm.Survival" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="10.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Entities\Individual\Actions\Survive.cs</FileName>
+      <FileName>Entities\Individual\Actions\Survival.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="GeneticAlgorithm.Individual" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.75" Y="1.5" Width="1.5" />
+    <Position X="16.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAQAAAAKABAMCAAAAAAAAAAAAAgEAAAAAEAgAAA=</HashCode>
+      <HashCode>ACAgAAAAAAAIBBAMCBAAAAAAAAAEAAAECAAAAEAAAAA=</HashCode>
       <FileName>Entities\Individual\Individual.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="GeneticAlgorithm.Pair" Collapsed="true">
-    <Position X="16" Y="2.5" Width="1.5" />
+    <Position X="15" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAABRAECAAAAAIAAABEAAAACAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAIEAABRAECAAAAAIAAAAEAAAACAAAQAAAAAQ=</HashCode>
       <FileName>Entities\Individual\Pair.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GeneticAlgorithm.Population" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.75" Y="2.5" Width="1.5" />
+    <Position X="16.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACABAACAAAAEQAAAAAABAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAACABAACAAAAEQAAAAAABAEAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Individual\Population.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -176,6 +176,13 @@
       <FileName>Interfaces\Recombination.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="GeneticAlgorithm.MainForm" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UCCAQCKABCkEgVwBEIGAYEAiIAIIgBgYCAAIALCAAAI=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="GeneticAlgorithm.IAction">
     <Position X="9" Y="2" Width="1.5" />
     <TypeIdentifier>
@@ -184,9 +191,9 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="GeneticAlgorithm.IFunction" Collapsed="true">
-    <Position X="15.25" Y="5.75" Width="1.5" />
+    <Position X="11.25" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAgAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Interfaces\IFunction.cs</FileName>
     </TypeIdentifier>
   </Interface>
