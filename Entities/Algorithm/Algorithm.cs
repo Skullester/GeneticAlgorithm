@@ -4,7 +4,7 @@ namespace GeneticAlgorithm;
 public class Algorithm
 {
     public static double MutationProbability = 0.01;
-    private const double delta = 1E-6;//-3
+    private const double delta = 1E-5;//-3
     public int MaxGenerations { get; set; }
 
     public const int StartSpeed = 40;
