@@ -7,7 +7,6 @@ public class Chart
     private readonly WinChart visualizer;
     public Chart(WinChart chart)
     {
-
         visualizer = chart;
     }
     public void Reset()
